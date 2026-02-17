@@ -1,0 +1,1 @@
+export { UserTypeInfoSection } from "./UserTypeInfoSection";

@@ -1,0 +1,1 @@
+export { KiramLp } from "./KiramLp";
