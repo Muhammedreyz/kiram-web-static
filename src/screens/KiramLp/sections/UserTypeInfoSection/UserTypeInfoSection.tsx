@@ -106,8 +106,9 @@ export const UserTypeInfoSection = (): JSX.Element => {
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-95"
                   }`}
-                  alt={`Adim ${index + 1}`}
+                  alt={`Adim ${index + 1}: ${step.title}`}
                   src={step.image}
+                  loading="lazy"
                 />
               ))}
             </div>

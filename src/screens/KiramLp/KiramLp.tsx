@@ -12,13 +12,15 @@ export const KiramLp = (): JSX.Element => {
   return (
     <div className="flex flex-col w-full bg-[#f6f6f9]">
       <NavbarSection />
-      <HeroSection />
-      <CalculatorSection />
-      <UserTypeInfoSection />
-      <HowItWorksSection />
-      <FAQSection />
-      <FeaturesSection />
-      <CallToActionSection />
+      <main>
+        <HeroSection />
+        <CalculatorSection />
+        <UserTypeInfoSection />
+        <HowItWorksSection />
+        <FAQSection />
+        <FeaturesSection />
+        <CallToActionSection />
+      </main>
       <FooterSection />
     </div>
   );

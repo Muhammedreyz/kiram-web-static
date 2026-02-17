@@ -77,8 +77,10 @@ export const HowItWorksSection = (): JSX.Element => {
     <section id="ozellikler" className="relative w-full bg-[#eaf3ff] px-4 sm:px-8 py-12 sm:py-[100px]">
       <img
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[950px] h-auto pointer-events-none opacity-30"
-        alt="Logo pattern"
+        alt=""
         src={logoPattern}
+        loading="lazy"
+        aria-hidden="true"
       />
 
       <div className="relative flex flex-col items-center gap-8 sm:gap-10 max-w-[1440px] mx-auto">

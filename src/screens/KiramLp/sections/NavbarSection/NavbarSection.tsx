@@ -22,12 +22,15 @@ export const NavbarSection = (): JSX.Element => {
 
   return (
     <div className="w-full bg-white">
+      <a href="#hero" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0047ab] focus:text-white focus:rounded-lg">
+        Icerige atla
+      </a>
       <header className="flex h-[72px] items-center justify-between px-5 sm:px-8 lg:px-16 w-full max-w-[1440px] mx-auto">
         <a href="#hero" onClick={() => handleNavClick("#hero")}>
-          <img src={kiramDark} alt="Kiram" className="h-6 sm:h-7" />
+          <img src={kiramDark} alt="Kiram - Guvenli Kira Yonetim Platformu" className="h-6 sm:h-7" />
         </a>
 
-        <nav className="hidden lg:flex items-center justify-center gap-6">
+        <nav aria-label="Ana navigasyon" className="hidden lg:flex items-center justify-center gap-6">
           <ul className="flex items-center gap-8 xl:gap-12">
             {navItems.map((item, index) => (
               <li key={index}>
@@ -48,6 +51,8 @@ export const NavbarSection = (): JSX.Element => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Menuyu kapat" : "Menuyu ac"}
+          aria-expanded={mobileOpen}
           className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
         >
           {mobileOpen ? (
@@ -63,7 +68,7 @@ export const NavbarSection = (): JSX.Element => {
           mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="flex flex-col p-4 gap-2">
+        <nav aria-label="Mobil navigasyon" className="flex flex-col p-4 gap-2">
           {navItems.map((item, index) => (
             <button
               key={index}

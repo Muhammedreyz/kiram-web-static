@@ -22,16 +22,16 @@ export const FooterSection = (): JSX.Element => {
             Bizi Takip Edin
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <a href="#" aria-label="Facebook" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Facebook className="w-5 h-5 text-white" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <a href="#" aria-label="Twitter" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Twitter className="w-5 h-5 text-white" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <a href="#" aria-label="Instagram" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Instagram className="w-5 h-5 text-white" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <a href="#" aria-label="LinkedIn" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Linkedin className="w-5 h-5 text-white" />
             </a>
           </div>

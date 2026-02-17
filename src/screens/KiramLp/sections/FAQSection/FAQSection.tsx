@@ -40,6 +40,7 @@ export const FAQSection = (): JSX.Element => {
     <section
       ref={ref}
       id="sss"
+      aria-label="Sik sorulan sorular"
       className={`flex flex-col items-center gap-8 sm:gap-12 pt-12 sm:pt-20 pb-0 px-4 sm:px-8 lg:px-16 w-full bg-white transition-all duration-700 ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}

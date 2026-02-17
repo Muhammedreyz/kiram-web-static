@@ -41,8 +41,9 @@ export const FeaturesSection = (): JSX.Element => {
             <div className="relative w-full lg:w-[45%] min-h-[250px] sm:min-h-[350px] lg:min-h-0 flex items-end justify-center lg:justify-start overflow-hidden">
               <img
                 className="w-[50%] sm:w-[40%] lg:w-[70%] h-auto object-contain lg:absolute lg:bottom-0 lg:left-[8%]"
-                alt="Kiram App"
+                alt="Kiram mobil uygulama - guvenli islemler, aninda bildirim, dijital belgeler"
                 src={footerMockup}
+                loading="lazy"
               />
             </div>
 

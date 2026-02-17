@@ -87,6 +87,7 @@ export const HeroSection = (): JSX.Element => {
           className="absolute top-0 right-0 w-[600px] lg:w-[900px] h-auto object-contain opacity-[0.07] pointer-events-none"
           alt=""
           src={patternBg}
+          aria-hidden="true"
         />
 
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
@@ -125,8 +126,10 @@ export const HeroSection = (): JSX.Element => {
             >
               <img
                 className="w-[75%] sm:w-[60%] lg:w-full max-w-[700px] xl:max-w-[760px] h-auto object-contain object-bottom drop-shadow-2xl"
-                alt="Kiram App"
+                alt="Kiram mobil uygulama ekran goruntuleri - kira yonetimi, depozito takibi ve dijital sozlesme"
                 src={phonesImg}
+                width={760}
+                height={800}
               />
             </div>
           </div>
@@ -144,6 +147,8 @@ export const HeroSection = (): JSX.Element => {
           className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
           alt=""
           src={patternBg}
+          loading="lazy"
+          aria-hidden="true"
         />
 
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 py-16 sm:py-20">
@@ -254,9 +259,9 @@ export const HeroSection = (): JSX.Element => {
                 </div>
 
                 <div className="flex flex-col gap-4 sm:gap-6 p-6 sm:p-8 lg:p-10 bg-[#0056c7]">
-                  <h2 className="[font-family:'Outfit',Helvetica] font-bold text-white text-lg sm:text-xl leading-7">
+                  <h3 className="[font-family:'Outfit',Helvetica] font-bold text-white text-lg sm:text-xl leading-7">
                     Potansiyel Getiriniz
-                  </h2>
+                  </h3>
 
                   <div className="flex flex-col gap-3 sm:gap-4">
                     <Card className="bg-[#ffffff1a] border border-[#ffffff33] rounded-2xl">
