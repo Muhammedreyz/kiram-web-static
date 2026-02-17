@@ -5,19 +5,19 @@ import homeIcon from "../../../../img/home.svg";
 import tickIcon from "../../../../img/tick.svg";
 
 const tenantsFeatures = [
-  "Sozlesme Boyunca Surekli Degerlenen Depozito",
-  "Dijital ve Guvenli Kira Sozlesmesi",
-  "Odeme, Sozlesme, Sigorta ve Yatirim Icin Tek Platform",
-  "Kira Oderken Yatirim Yapma Imkani",
-  "Depozito Kefalet Sigortasi ve Kira Finansmani Imkani",
+  "Sözleşme Boyunca Sürekli Değerlenen Depozito",
+  "Dijital ve Güvenli Kira Sözleşmesi",
+  "Ödeme, Sözleşme, Sigorta ve Yatırım İçin Tek Platform",
+  "Kira Öderken Yatırım Yapma İmkanı",
+  "Depozito Kefalet Sigortası ve Kira Finansmanı İmkanı",
 ];
 
 const landlordsFeatures = [
-  "Depozitolar Guvende ve Iadeler Onaya Tabi",
-  "Dusuk Kira Riski ve Otomatik Tahsilat",
-  "Mulkler, Sozlesmeler ve Odeme Gecmisi Tek Platformda",
-  "Kira Gelirini Yatirima Donusturme Imkani",
-  "Kiracinin Finansal Skorunu Bilme ve Kira Garanti Sistemi",
+  "Depozitolar Güvende ve İadeler Onaya Tabi",
+  "Düşük Kira Riski ve Otomatik Tahsilat",
+  "Mülkler, Sözleşmeler ve Ödeme Geçmişi Tek Platformda",
+  "Kira Gelirini Yatırıma Dönüştürme İmkanı",
+  "Kiracının Finansal Skorunu Bilme ve Kira Garanti Sistemi",
 ];
 
 export const CalculatorSection = (): JSX.Element => {
@@ -35,10 +35,10 @@ export const CalculatorSection = (): JSX.Element => {
         }`}
       >
         <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center tracking-[0] leading-[1.25]">
-          Kimin Icin?
+          Kimin İçin?
         </h2>
         <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-lg text-center tracking-[0] leading-[27px] max-w-2xl px-4">
-          Kiram, hem kiracilar hem de ev sahipleri icin guvenli bir cozum sunar
+          Kiram, hem kiracılar hem de ev sahipleri için güvenli bir çözüm sunar
         </p>
       </header>
 
@@ -56,7 +56,7 @@ export const CalculatorSection = (): JSX.Element => {
               </div>
 
               <h3 className="self-stretch [font-family:'Outfit',Helvetica] font-bold text-[#0e1e44] text-lg sm:text-[22px] tracking-[0] leading-[33px]">
-                Kiracilar Icin
+                Kiracılar İçin
               </h3>
 
               {tenantsFeatures.map((feature, index) => (
@@ -84,7 +84,7 @@ export const CalculatorSection = (): JSX.Element => {
               </div>
 
               <h3 className="self-stretch [font-family:'Outfit',Helvetica] font-bold text-[#0e1e44] text-lg sm:text-[22px] tracking-[0] leading-[33px]">
-                Ev Sahipleri Icin
+                Ev Sahipleri İçin
               </h3>
 
               {landlordsFeatures.map((feature, index) => (

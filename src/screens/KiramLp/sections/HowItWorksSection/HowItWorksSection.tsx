@@ -14,58 +14,58 @@ const features = [
   {
     icon: ozellik1,
     iconBg: "bg-[linear-gradient(180deg,rgba(0,86,199,1)_0%,rgba(0,73,168,1)_100%)]",
-    title: "Depozito Guvende ve Degerlenir",
+    title: "Depozito Güvende ve Değerlenir",
     description:
-      "Depozito taraflardan bagimsiz sistemde tutulur, seffaf sekilde iade edilir.",
+      "Depozito taraflardan bağımsız sistemde tutulur, şeffaf şekilde iade edilir.",
   },
   {
     icon: fileShield,
     iconBg:
       "bg-[linear-gradient(180deg,rgba(14,165,233,1)_0%,rgba(6,182,212,1)_100%)]",
-    title: "Dijital Kira Sozlesmesi",
+    title: "Dijital Kira Sözleşmesi",
     description:
-      "Dakikalar icinde olusturulur, tum odemeler sozlesmeye baglidir.",
+      "Dakikalar içinde oluşturulur, tüm ödemeler sözleşmeye bağlıdır.",
   },
   {
     icon: akilliOdeme,
     iconBg: "bg-[linear-gradient(180deg,rgba(251,146,60,1)_0%,rgba(249,115,22,1)_100%)]",
-    title: "Akilli Odeme Takibi",
-    description: "Bekleyen, tamamlanan, gecmis tum islemler tek panelde.",
+    title: "Akıllı Ödeme Takibi",
+    description: "Bekleyen, tamamlanan, geçmiş tüm işlemler tek panelde.",
   },
   {
     icon: kiraAkisi,
     iconBg: "bg-[linear-gradient(180deg,rgba(56,224,140,1)_0%,rgba(20,199,157,1)_100%)]",
-    title: "Kira Akisini Yatirima Donusturme",
+    title: "Kira Akışını Yatırıma Dönüştürme",
     description:
-      "Kira sozlesme boyunca yatirim secenekleriyle degerlendirilebilir.",
+      "Kira sözleşme boyunca yatırım seçenekleriyle değerlendirilebilir.",
   },
   {
     icon: tarafsiz,
     iconBg: "bg-[linear-gradient(180deg,rgba(99,102,241,1)_0%,rgba(79,70,229,1)_100%)]",
-    title: "Tarafsiz ve Seffaf Sistem",
-    description: "Her islem kayitli, her surec izlenebilir.",
+    title: "Tarafsız ve Şeffaf Sistem",
+    description: "Her işlem kayıtlı, her süreç izlenebilir.",
   },
   {
     icon: kolayKurulum,
     iconBg: "bg-[linear-gradient(180deg,rgba(168,85,247,1)_0%,rgba(147,51,234,1)_100%)]",
     title: "Kolay Kurulum",
-    description: "Karmasik surecler yok, dakikalar icinde baslayabilirsiniz.",
+    description: "Karmaşık süreçler yok, dakikalar içinde başlayabilirsiniz.",
   },
   {
     icon: cokluPortfoy,
     iconBg:
       "bg-[linear-gradient(180deg,rgba(235,70,151,1)_0%,rgba(220,43,121,1)_100%)]",
-    title: "Coklu Portfolyo Yonetimi",
+    title: "Çoklu Portföy Yönetimi",
     description:
-      "Birden fazla mulku tek panelden yonet. Portfolyo gorunumu, Gelir raporlari, Performans analizi",
+      "Birden fazla mülkü tek panelden yönet. Portföy görünümü, Gelir raporları, Performans analizi",
   },
   {
     icon: guvenliFinansal,
     iconBg:
       "bg-[linear-gradient(180deg,rgba(34,210,238,1)_0%,rgba(8,184,214,1)_100%)]",
-    title: "Guvenli Finansal Altyapi",
+    title: "Güvenli Finansal Altyapı",
     description:
-      "KVKK uyumlu veri yapisi, Banka entegrasyonlari, Guvenli odeme altyapisi",
+      "KVKK uyumlu veri yapısı, Banka entegrasyonları, Güvenli ödeme altyapısı",
   },
 ];
 
@@ -91,11 +91,11 @@ export const HowItWorksSection = (): JSX.Element => {
           }`}
         >
           <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center tracking-[0] leading-[1.25]">
-            Ozellikler
+            Özellikler
           </h2>
 
           <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-lg text-center tracking-[0] leading-[27px]">
-            Ne ekstra evrak, ne belirsiz adimlar.
+            Ne ekstra evrak, ne belirsiz adımlar.
           </p>
         </div>
 

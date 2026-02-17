@@ -4,46 +4,46 @@ import nasilCalisir1 from "../../../../img/nasil-calisir-1.png";
 const steps = [
   {
     number: 1,
-    title: "Hesabini olustur, rolunu sec",
+    title: "Hesabını oluştur, rolunu seç",
     description:
-      "Ev sahibi / Kiraci / Emlak ofisi olarak kaydol. Profil bilgilerini tamamla ve sureci baslat.",
-    highlight: "2 dakikada hazir.",
+      "Ev sahibi / Kiracı / Emlak ofisi olarak kaydol. Profil bilgilerini tamamla ve süreci başlat.",
+    highlight: "2 dakikada hazır.",
     image: nasilCalisir1,
   },
   {
     number: 2,
-    title: "Kimligini dogrula ve guvenli eslestirme yap",
-    description: "Kiminle sozlesme yaptigini bil.",
+    title: "Kimliğini doğrula ve güvenli eşleştirme yap",
+    description: "Kiminle sözleşme yaptığını bil.",
     image: nasilCalisir1,
   },
   {
     number: 3,
-    title: "Dijital kira sozlesmesini olustur",
-    description: "Sozlesme tek yerde, her an erisilebilir.",
+    title: "Dijital kira sözleşmesini oluştur",
+    description: "Sözleşme tek yerde, her an erişilebilir.",
     image: nasilCalisir1,
   },
   {
     number: 4,
-    title: "Depozitonu guvenceye al",
-    description: "Depozitoda seffaflik ve guven.",
+    title: "Depozitonu güvenceye al",
+    description: "Depozitoda şeffaflık ve güven.",
     image: nasilCalisir1,
   },
   {
     number: 5,
-    title: "Kira odemelerini otomatiklestir",
+    title: "Kira ödemelerini otomatikleştir",
     description: "Takip yok, stres yok.",
     image: nasilCalisir1,
   },
   {
     number: 6,
-    title: "Kira akisini yatirima bagla (opsiyonel)",
-    description: "Kira gideri degil, finansal akis.",
+    title: "Kira akışını yatırıma bağla (opsiyonel)",
+    description: "Kira gideri değil, finansal akış.",
     image: nasilCalisir1,
   },
   {
     number: 7,
-    title: "Tum sureci raporla ve kayit altinda tut",
-    description: "Kiralama surecleri tek panelde.",
+    title: "Tüm süreci raporla ve kayıt altında tut",
+    description: "Kiralama süreçleri tek panelde.",
     image: nasilCalisir1,
   },
 ];
@@ -134,15 +134,15 @@ export const UserTypeInfoSection = (): JSX.Element => {
       id="nasil-calisir"
       style={{ height: `${steps.length * 100}vh` }}
       className="relative w-full"
-      aria-label="Nasil calisir adimlari"
+      aria-label="Nasıl çalışır adımları"
     >
       <div className="sticky top-0 h-screen w-full flex flex-col bg-white">
         <div className="flex flex-col items-center gap-2 w-full pt-8 sm:pt-12 pb-4 sm:pb-6 px-5">
           <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center leading-[1.25]">
-            Nasil Calisir?
+            Nasıl Çalışır?
           </h2>
           <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-base sm:text-lg text-center leading-[27px]">
-            3 Dakikada Kur, Kirani Akilli Yonet
+            3 Dakikada Kur, Kiranı Akıllı Yönet
           </p>
         </div>
 

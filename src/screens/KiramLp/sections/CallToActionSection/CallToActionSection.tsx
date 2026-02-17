@@ -4,8 +4,8 @@ import { useInView } from "../../../../hooks/useScrollAnimation";
 
 const features = [
   { text: "Kurulum gerekmez" },
-  { text: "Taahhut yoktur" },
-  { text: "Dakikalar icinde baslayin" },
+  { text: "Taahhüt yoktur" },
+  { text: "Dakikalar içinde başlayın" },
 ];
 
 export const CallToActionSection = (): JSX.Element => {
@@ -22,9 +22,9 @@ export const CallToActionSection = (): JSX.Element => {
         }`}
       >
         <h2 className="[font-family:'Outfit',Helvetica] font-bold text-white text-2xl sm:text-4xl lg:text-5xl text-center tracking-[0] leading-[1.2]">
-          Depozitonuzu guvene alin.
+          Depozitonuzu güvene alın.
           <br />
-          Kira surecini netlestirin.
+          Kira sürecini netleştirin.
         </h2>
       </div>
 
@@ -35,7 +35,7 @@ export const CallToActionSection = (): JSX.Element => {
       >
         <Button className="h-12 sm:h-16 px-4 sm:px-6 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl transition-transform duration-300 hover:scale-105 active:scale-95">
           <span className="[font-family:'Outfit',Helvetica] font-semibold text-white text-base sm:text-lg lg:text-[22px] tracking-[0.44px] leading-[22px] whitespace-nowrap">
-            Sozlesmeni Simdi Olustur
+            Sözleşmeni Şimdi Oluştur
           </span>
         </Button>
       </div>

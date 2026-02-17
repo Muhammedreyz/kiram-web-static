@@ -4,9 +4,9 @@ import { MenuIcon, XIcon } from "lucide-react";
 import kiramDark from "../../../../img/kiram-dark.svg";
 
 const navItems = [
-  { label: "Kimin Icin?", href: "#kimin-icin" },
-  { label: "Nasil Calisir?", href: "#nasil-calisir" },
-  { label: "Ozellikler", href: "#ozellikler" },
+  { label: "Kimin İçin?", href: "#kimin-icin" },
+  { label: "Nasıl Çalışır?", href: "#nasil-calisir" },
+  { label: "Özellikler", href: "#ozellikler" },
   { label: "SSS", href: "#sss" },
 ];
 
@@ -23,11 +23,11 @@ export const NavbarSection = (): JSX.Element => {
   return (
     <div className="w-full bg-white">
       <a href="#hero" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0047ab] focus:text-white focus:rounded-lg">
-        Icerige atla
+        İçeriğe atla
       </a>
       <header className="flex h-[72px] items-center justify-between px-5 sm:px-8 lg:px-16 w-full max-w-[1440px] mx-auto">
         <a href="#hero" onClick={() => handleNavClick("#hero")}>
-          <img src={kiramDark} alt="Kiram - Guvenli Kira Yonetim Platformu" className="h-6 sm:h-7" />
+          <img src={kiramDark} alt="Kiram - Güvenli Kira Yönetim Platformu" className="h-6 sm:h-7" />
         </a>
 
         <nav aria-label="Ana navigasyon" className="hidden lg:flex items-center justify-center gap-6">
@@ -45,13 +45,13 @@ export const NavbarSection = (): JSX.Element => {
           </ul>
 
           <Button className="h-11 px-6 py-2.5 bg-[#0047ab] hover:bg-[#003a8c] rounded-[100px] [font-family:'Kumbh_Sans',Helvetica] font-semibold text-white text-base transition-transform duration-300 hover:scale-105 active:scale-95">
-            Uye Ol
+            Üye Ol
           </Button>
         </nav>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Menuyu kapat" : "Menuyu ac"}
+          aria-label={mobileOpen ? "Menüyü kapat" : "Menüyü aç"}
           aria-expanded={mobileOpen}
           className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
         >
@@ -82,7 +82,7 @@ export const NavbarSection = (): JSX.Element => {
             onClick={() => setMobileOpen(false)}
             className="h-11 mt-2 bg-[#0047ab] hover:bg-[#003a8c] rounded-[100px] [font-family:'Kumbh_Sans',Helvetica] font-semibold text-white text-base"
           >
-            Uye Ol
+            Üye Ol
           </Button>
         </nav>
       </div>

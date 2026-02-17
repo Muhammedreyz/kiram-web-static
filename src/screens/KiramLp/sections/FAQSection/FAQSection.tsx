@@ -9,27 +9,27 @@ import { useInView } from "../../../../hooks/useScrollAnimation";
 const faqData = [
   {
     id: "item-1",
-    question: "Depozito kimin hesabinda duruyor?",
+    question: "Depozito kimin hesabında duruyor?",
     answer:
-      "Depozito, Kiram'in tarafsiz emanet sisteminde tutulur. Ne kiracinin ne de ev sahibinin kisisel hesabinda bulunmaz. Bu sayede her iki taraf icin de tam guvenlik saglanir ve surec sonunda sozlesmeye gore otomatik olarak islenir.",
+      "Depozito, Kiram'ın tarafsız emanet sisteminde tutulur. Ne kiracının ne de ev sahibinin kişisel hesabında bulunmaz. Bu sayede her iki taraf için de tam güvenlik sağlanır ve süreç sonunda sözleşmeye göre otomatik olarak işlenir.",
   },
   {
     id: "item-2",
-    question: "Ev sahibi parayi erken cekebilir mi?",
+    question: "Ev sahibi parayı erken çekebilir mi?",
     answer:
-      "Hayir, ev sahibi depozitoyu tek tarafli olarak cekemez. Depozito, sozlesme sartlarina bagli olarak tarafsiz sistem tarafindan yonetilir.",
+      "Hayır, ev sahibi depozitoyu tek taraflı olarak çekemez. Depozito, sözleşme şartlarına bağlı olarak tarafsız sistem tarafından yönetilir.",
   },
   {
     id: "item-3",
-    question: "Kira bitince iade nasil olur?",
+    question: "Kira bitince iade nasıl olur?",
     answer:
-      "Kira suresi sona erdiginde, depozito otomatik olarak degerlendirilmis haliyle kiraci hesabina iade edilir. Hasar tespiti durumunda iki tarafin da onayiyla kesinti yapilabilir.",
+      "Kira süresi sona erdiğinde, depozito otomatik olarak değerlendirilmiş haliyle kiracı hesabına iade edilir. Hasar tespiti durumunda iki tarafın da onayıyla kesinti yapılabilir.",
   },
   {
     id: "item-4",
-    question: "Birden fazla sozlesme yonetebilir miyim?",
+    question: "Birden fazla sözleşme yönetebilir miyim?",
     answer:
-      "Evet, Kiram uzerinden birden fazla mulk ve sozlesmeyi tek panelden yonetebilirsiniz. Her sozlesme icin ayri takip ve raporlama yapilir.",
+      "Evet, Kiram üzerinden birden fazla mülk ve sözleşmeyi tek panelden yönetebilirsiniz. Her sözleşme için ayrı takip ve raporlama yapılır.",
   },
 ];
 
@@ -40,14 +40,14 @@ export const FAQSection = (): JSX.Element => {
     <section
       ref={ref}
       id="sss"
-      aria-label="Sik sorulan sorular"
+      aria-label="Sık sorulan sorular"
       className={`flex flex-col items-center gap-8 sm:gap-12 pt-12 sm:pt-20 pb-0 px-4 sm:px-8 lg:px-16 w-full bg-white transition-all duration-700 ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
       <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-8 sm:gap-12">
       <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center tracking-[0] leading-[1.25]">
-        Sik Sorulan Sorular
+        Sık Sorulan Sorular
       </h2>
 
       <Accordion

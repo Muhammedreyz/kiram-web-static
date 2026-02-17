@@ -41,7 +41,7 @@ export const FeaturesSection = (): JSX.Element => {
             <div className="relative w-full lg:w-[45%] min-h-[250px] sm:min-h-[350px] lg:min-h-0 flex items-end justify-center lg:justify-start overflow-hidden">
               <img
                 className="w-[50%] sm:w-[40%] lg:w-[70%] h-auto object-contain lg:absolute lg:bottom-0 lg:left-[8%]"
-                alt="Kiram mobil uygulama - guvenli islemler, aninda bildirim, dijital belgeler"
+                alt="Kiram mobil uygulama - güvenli işlemler, anında bildirim, dijital belgeler"
                 src={footerMockup}
                 loading="lazy"
               />
@@ -50,7 +50,7 @@ export const FeaturesSection = (): JSX.Element => {
             <div className="flex flex-col w-full lg:w-[55%] items-center lg:items-start gap-5 sm:gap-6 p-6 sm:p-8 lg:p-0 lg:py-12 lg:pr-16">
               <div className="flex flex-col items-center lg:items-start gap-2">
                 <h2 className="[font-family:'Kumbh_Sans',Helvetica] font-bold text-black text-2xl sm:text-[32px] lg:text-[40px] tracking-[0] leading-[1.2] text-center lg:text-left">
-                  Kiram'i <br />
+                  Kiram'ı <br />
                   Cebinize Taşıyın
                 </h2>
 

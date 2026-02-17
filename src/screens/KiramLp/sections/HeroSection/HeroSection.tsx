@@ -98,23 +98,23 @@ export const HeroSection = (): JSX.Element => {
               }`}
             >
               <p className="[font-family:'Outfit',Helvetica] font-normal italic text-[#36466d] text-lg sm:text-xl mb-5">
-                Kira iliskisini guvenle yonetin.
+                Kira ilişkisini güvenle yönetin.
               </p>
               <h1 className="[font-family:'Outfit',Helvetica] font-bold text-[#0056c7] text-[32px] sm:text-[42px] lg:text-[48px] xl:text-[56px] tracking-[-0.02em] leading-[1.1] mb-6">
                 Kira, Depozito,
                 <br />
-                Sigorta ve Yatirim
+                Sigorta ve Yatırım
                 <br />
                 Tek Uygulamada
               </h1>
               <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-[15px] sm:text-base lg:text-[17px] leading-[1.65] mb-8 max-w-[480px] mx-auto lg:mx-0">
-                Kiram, ev sahibi ve kiraci arasinda guvenli dijital sozlesme,
-                akilli kira tahsilati, kredi skoru analizi ve yatirim
-                entegrasyonu saglayan yeni nesil rent-tech platformudur.
+                Kiram, ev sahibi ve kiracı arasında güvenli dijital sözleşme,
+                akıllı kira tahsilatı, kredi skoru analizi ve yatırım
+                entegrasyonu sağlayan yeni nesil rent-tech platformudur.
               </p>
               <div>
                 <Button className="h-[52px] sm:h-14 px-7 sm:px-8 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl [font-family:'Outfit',Helvetica] font-semibold text-white text-base sm:text-lg tracking-[0.01em] transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-orange-200/50">
-                  Sozlesmeni Simdi Olustur
+                  Sözleşmeni Şimdi Oluştur
                 </Button>
               </div>
             </div>
@@ -126,7 +126,7 @@ export const HeroSection = (): JSX.Element => {
             >
               <img
                 className="w-[75%] sm:w-[60%] lg:w-full max-w-[700px] xl:max-w-[760px] h-auto object-contain object-bottom drop-shadow-2xl"
-                alt="Kiram mobil uygulama ekran goruntuleri - kira yonetimi, depozito takibi ve dijital sozlesme"
+                alt="Kiram mobil uygulama ekran görüntüleri - kira yönetimi, depozito takibi ve dijital sözleşme"
                 src={phonesImg}
                 width={760}
                 height={800}
@@ -154,10 +154,10 @@ export const HeroSection = (): JSX.Element => {
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 py-16 sm:py-20">
           <div className="flex flex-col items-center gap-4 sm:gap-6 mb-8 sm:mb-12">
             <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center leading-[1.25]">
-              Getirinizi Hesaplayin
+              Getirinizi Hesaplayın
             </h2>
             <p className="[font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-base lg:text-lg text-center leading-[1.5] max-w-3xl">
-              Klasik yontemde bekleyen paraniz, Kiram'da <span className="font-bold">faizsiz</span> yatirim fonlariyla degerlendirilebilir
+              Klasik yöntemde bekleyen paranız, Kiram'da <span className="font-bold">faizsiz</span> yatırım fonlarıyla değerlendirilebilir
             </p>
           </div>
 
@@ -190,7 +190,7 @@ export const HeroSection = (): JSX.Element => {
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
                       <Label className="[font-family:'Outfit',Helvetica] font-semibold text-[#121416] text-sm leading-5">
-                        {mode === "depozito" ? "Depozito Tutari" : "Aylik Kira"}
+                        {mode === "depozito" ? "Depozito Tutarı" : "Aylık Kira"}
                       </Label>
                       <div className="h-[56px] sm:h-[68px] px-4 flex items-center border-2 rounded-[14px] border-input bg-white">
                         <span className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-xl sm:text-2xl flex-1">
@@ -219,7 +219,7 @@ export const HeroSection = (): JSX.Element => {
 
                     <div className="flex flex-col gap-2">
                       <Label className="[font-family:'Outfit',Helvetica] font-semibold text-[#121416] text-sm leading-5">
-                        Sure (Ay)
+                        Süre (Ay)
                       </Label>
                       <div className="h-[56px] sm:h-[68px] px-4 flex items-center border-2 rounded-[14px] border-input bg-white">
                         <span className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-xl sm:text-2xl flex-1">
@@ -251,8 +251,8 @@ export const HeroSection = (): JSX.Element => {
                     <AlertDescription className="[font-family:'Inter',Helvetica] text-xs sm:text-sm leading-[22.8px]">
                       <span className="font-bold text-[#121416]">Not:</span>
                       <span className="text-[#4a5568]">
-                        {" "}Getiri oranlari ornek amaclidir. Gercek getiriler piyasa
-                        kosullarina ve secilen yatirim urunune gore degisir.
+                        {" "}Getiri oranları örnek amaçlıdır. Gerçek getiriler piyasa
+                        koşullarına ve seçilen yatırım ürününe göre değişir.
                       </span>
                     </AlertDescription>
                   </Alert>
@@ -267,7 +267,7 @@ export const HeroSection = (): JSX.Element => {
                     <Card className="bg-[#ffffff1a] border border-[#ffffff33] rounded-2xl">
                       <CardContent className="flex flex-col justify-center gap-1 px-5 py-3 sm:py-4 min-h-[80px] sm:min-h-[100px]">
                         <span className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffffcc] text-sm sm:text-base leading-5">
-                          {mode === "depozito" ? "Toplam Depozito" : "Toplam Odenen Kira"}
+                          {mode === "depozito" ? "Toplam Depozito" : "Toplam Ödenen Kira"}
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-white text-2xl sm:text-4xl leading-10 transition-all duration-500">
                           {formatCurrency(result.principal)} TL
@@ -278,13 +278,13 @@ export const HeroSection = (): JSX.Element => {
                     <Card className="bg-[#ffffff1a] border border-[#ffffff33] rounded-2xl">
                       <CardContent className="flex flex-col justify-center gap-1 px-5 py-3 sm:py-4 min-h-[90px] sm:min-h-[120px]">
                         <span className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffffcc] text-sm sm:text-base leading-5">
-                          Kazanc (Tahmini)
+                          Kazanç (Tahmini)
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-[#39e58f] text-2xl sm:text-4xl leading-10 transition-all duration-500">
                           +{formatCurrency(result.earnings)} TL
                         </p>
                         <p className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffff99] text-xs sm:text-sm leading-5">
-                          {duration} ay boyunca %{(ANNUAL_RATE * 100).toFixed(0)} yillik getiri ile
+                          {duration} ay boyunca %{(ANNUAL_RATE * 100).toFixed(0)} yıllık getiri ile
                         </p>
                       </CardContent>
                     </Card>
@@ -292,7 +292,7 @@ export const HeroSection = (): JSX.Element => {
                     <Card className="bg-[linear-gradient(180deg,rgba(56,224,140,1)_0%,rgba(20,199,157,1)_100%)] border-0 rounded-2xl shadow-[0px_8px_10px_-6px_#0000001a,0px_20px_25px_-5px_#0000001a]">
                       <CardContent className="flex flex-col justify-center gap-1 p-5 sm:p-6 min-h-[100px] sm:min-h-[120px]">
                         <span className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffffe6] text-sm sm:text-base leading-5">
-                          Toplam Deger
+                          Toplam Değer
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-white text-3xl sm:text-5xl leading-[48px] transition-all duration-500">
                           {formatCurrency(result.total)} TL
@@ -302,9 +302,9 @@ export const HeroSection = (): JSX.Element => {
                   </div>
 
                   <p className="[font-family:'Outfit',Helvetica] font-normal text-[#d2e4fc] text-xs sm:text-sm leading-[22.8px]">
-                    Depozitonuz kira suresi boyunca atil kalmak yerine, guvenli
-                    yatirim araclariyla degerlendirilebilir. Kira bitiminde hem
-                    depozitonuzu hem de kazancinizi alirsiniz.
+                    Depozitonuz kira süresi boyunca atıl kalmak yerine, güvenli
+                    yatırım araçlarıyla değerlendirilebilir. Kira bitiminde hem
+                    depozitonuzu hem de kazancınızı alırsınız.
                   </p>
                 </div>
               </div>
