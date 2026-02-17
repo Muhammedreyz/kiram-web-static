@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import nasilCalisir1 from "../../../../img/nasil-calisir-1.png";
 
 const steps = [
@@ -53,8 +53,11 @@ export const UserTypeInfoSection = (): JSX.Element => {
   const stepsListRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [activeStep, setActiveStep] = useState(0);
+  const [prevStep, setPrevStep] = useState(0);
   const [userClicked, setUserClicked] = useState(false);
   const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const direction = useMemo(() => (activeStep >= prevStep ? 1 : -1), [activeStep, prevStep]);
 
   const scrollActiveIntoView = useCallback((index: number) => {
     const el = stepRefs.current[index];
@@ -71,7 +74,10 @@ export const UserTypeInfoSection = (): JSX.Element => {
   }, []);
 
   const handleStepClick = useCallback((index: number) => {
-    setActiveStep(index);
+    setActiveStep((prev) => {
+      setPrevStep(prev);
+      return index;
+    });
     setUserClicked(true);
     scrollActiveIntoView(index);
 
@@ -103,6 +109,7 @@ export const UserTypeInfoSection = (): JSX.Element => {
 
     setActiveStep((prev) => {
       if (prev !== newStep) {
+        setPrevStep(prev);
         requestAnimationFrame(() => scrollActiveIntoView(newStep));
       }
       return newStep;
@@ -141,20 +148,46 @@ export const UserTypeInfoSection = (): JSX.Element => {
 
         <div className="flex-1 min-h-0 flex flex-col lg:flex-row items-center lg:items-stretch max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-16 gap-6 lg:gap-16 pb-6 sm:pb-8">
           <div className="flex-shrink-0 flex items-center justify-center lg:w-[420px] xl:w-[460px]">
-            <div className="relative w-[220px] sm:w-[280px] lg:w-full bg-[#F3F3F3] rounded-[40px] sm:rounded-[48px] lg:rounded-[64px] p-3 sm:p-4 lg:p-6 flex items-center justify-center">
-              {steps.map((step, index) => (
-                <img
-                  key={index}
-                  className={`${index === 0 ? "relative" : "absolute inset-0 p-3 sm:p-4 lg:p-6"} w-full h-auto object-contain transition-all duration-700 ease-in-out ${
-                    index === activeStep
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-95"
-                  }`}
-                  alt={`Adim ${index + 1}: ${step.title}`}
-                  src={step.image}
-                  loading="lazy"
-                />
-              ))}
+            <div className="relative w-[220px] sm:w-[280px] lg:w-full bg-[#F3F3F3] rounded-[40px] sm:rounded-[48px] lg:rounded-[64px] p-3 sm:p-4 lg:p-6 flex items-center justify-center overflow-hidden">
+              {steps.map((step, index) => {
+                const isActive = index === activeStep;
+                const isExiting = index === prevStep && index !== activeStep;
+
+                let transform = "translateY(40px) scale(0.97)";
+                let opacity = "0";
+                let filter = "blur(4px)";
+
+                if (isActive) {
+                  transform = "translateY(0) scale(1)";
+                  opacity = "1";
+                  filter = "blur(0px)";
+                } else if (isExiting) {
+                  transform = `translateY(${direction > 0 ? "-30px" : "30px"}) scale(0.97)`;
+                  opacity = "0";
+                  filter = "blur(4px)";
+                } else if (index > activeStep) {
+                  transform = "translateY(40px) scale(0.97)";
+                } else {
+                  transform = "translateY(-40px) scale(0.97)";
+                }
+
+                return (
+                  <img
+                    key={index}
+                    style={{
+                      transform,
+                      opacity,
+                      filter,
+                      transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease",
+                      willChange: "transform, opacity, filter",
+                    }}
+                    className={`${index === 0 ? "relative" : "absolute inset-0 p-3 sm:p-4 lg:p-6"} w-full h-auto object-contain`}
+                    alt={`Adim ${index + 1}: ${step.title}`}
+                    src={step.image}
+                    loading="lazy"
+                  />
+                );
+              })}
             </div>
           </div>
 
