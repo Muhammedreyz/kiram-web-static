@@ -9,7 +9,7 @@ export const FooterSection = (): JSX.Element => {
         src={patternBg}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
       />
       <div className="relative z-10 flex flex-col max-w-[542px] items-center gap-6 sm:gap-8 w-full">
         <div className="flex flex-col items-center gap-6 sm:gap-8 w-full">

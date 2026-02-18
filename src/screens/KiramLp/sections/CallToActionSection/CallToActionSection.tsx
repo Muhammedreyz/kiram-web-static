@@ -21,7 +21,7 @@ export const CallToActionSection = (): JSX.Element => {
         src={patternBg}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
       />
       <div
         className={`flex flex-col items-center gap-4 sm:gap-6 relative z-10 transition-all duration-700 ${
