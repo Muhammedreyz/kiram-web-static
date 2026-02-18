@@ -1,6 +1,7 @@
 import { CheckIcon } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import { useInView } from "../../../../hooks/useScrollAnimation";
+import patternBg from "../../../../img/Frame_4205927.png";
 
 const features = [
   { text: "Kurulum gerekmez" },
@@ -14,8 +15,14 @@ export const CallToActionSection = (): JSX.Element => {
   return (
     <section
       ref={ref}
-      className="flex flex-col items-center gap-8 sm:gap-12 px-4 sm:px-8 lg:px-16 py-12 sm:py-20 relative w-full bg-[#00449c] border-b border-solid border-[#184379]"
+      className="flex flex-col items-center gap-8 sm:gap-12 px-4 sm:px-8 lg:px-16 py-12 sm:py-20 relative w-full bg-[#00449c] border-b border-solid border-[#184379] overflow-hidden"
     >
+      <img
+        src={patternBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
+      />
       <div
         className={`flex flex-col items-center gap-4 sm:gap-6 relative z-10 transition-all duration-700 ${
           isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"

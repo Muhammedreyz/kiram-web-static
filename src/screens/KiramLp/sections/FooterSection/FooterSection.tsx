@@ -1,9 +1,16 @@
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
+import patternBg from "../../../../img/Frame_4205927.png";
 
 export const FooterSection = (): JSX.Element => {
   return (
     <footer className="relative flex flex-col items-center gap-8 sm:gap-12 pt-8 sm:pt-10 pb-6 px-4 sm:px-8 lg:px-16 w-full bg-[#00357a] overflow-hidden">
+      <img
+        src={patternBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none select-none"
+      />
       <div className="relative z-10 flex flex-col max-w-[542px] items-center gap-6 sm:gap-8 w-full">
         <div className="flex flex-col items-center gap-6 sm:gap-8 w-full">
           <img src={kiramWhite} alt="Kiram" className="h-6 sm:h-8" />
