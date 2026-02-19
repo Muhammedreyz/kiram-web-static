@@ -1,5 +1,4 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
-import xLogo from "../../../../img/X_logo_2023.svg";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
 import patternBg from "../../../../img/Frame_4205927.png";
 
@@ -33,8 +32,8 @@ export const FooterSection = (): JSX.Element => {
             <a href="#" aria-label="Facebook" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Facebook className="w-5 h-5 text-white" />
             </a>
-            <a href="#" aria-label="X" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-              <img src={xLogo} alt="X" className="w-4 h-4 invert" />
+            <a href="#" aria-label="Twitter" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+              <Twitter className="w-5 h-5 text-white" />
             </a>
             <a href="#" aria-label="Instagram" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Instagram className="w-5 h-5 text-white" />

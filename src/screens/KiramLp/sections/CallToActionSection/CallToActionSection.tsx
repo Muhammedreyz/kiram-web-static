@@ -54,7 +54,7 @@ export const CallToActionSection = (): JSX.Element => {
       >
         {features.map((feature, index) => (
           <div key={index} className="flex items-center gap-2">
-            <CheckIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#39e08a]" />
+            <CheckIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#98acc3]" />
             <span className="[font-family:'Kumbh_Sans',Helvetica] font-normal text-[#98acc3] text-xs sm:text-[13px] text-center tracking-[0] leading-[16px] whitespace-nowrap">
               {feature.text}
             </span>
