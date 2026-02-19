@@ -1,147 +1,122 @@
-import { Card, CardContent } from "../../../../components/ui/card";
-import { useInView } from "../../../../hooks/useScrollAnimation";
-import ozellik1 from "../../../../img/ozellik-1.svg";
-import fileShield from "../../../../img/file-shield.svg";
-import akilliOdeme from "../../../../img/akilli-odeme.svg";
-import kiraAkisi from "../../../../img/kira-akisi.svg";
-import tarafsiz from "../../../../img/tarafsiz.svg";
-import kolayKurulum from "../../../../img/kolay-kurulum.svg";
-import cokluPortfoy from "../../../../img/coklu-portfoy.svg";
-import guvenliFinansal from "../../../../img/guvenli-finansal-altyapi.svg";
-import logoPattern from "../../../../img/logo-pattern.png";
+import { useState } from "react";
+import nasilCalisir from "../../../../img/nasil-calisir-1.png";
 
-const features = [
+const steps = [
   {
-    icon: ozellik1,
-    iconBg: "bg-[linear-gradient(180deg,rgba(0,86,199,1)_0%,rgba(0,73,168,1)_100%)]",
-    title: "Depozito Güvende ve Değerlenir",
+    id: 1,
+    title: "Hesabını oluştur, rolunu seç",
     description:
-      "Depozito taraflardan bağımsız sistemde tutulur, şeffaf şekilde iade edilir.",
+      "Ev sahibi / Kiracı / Emlak aracısı olarak kayıt ol. Profil bilgilerini tamamla ve sisteme giriş yap. 2 dakikada hazır.",
+    badge: "2 dakikada hazır",
   },
   {
-    icon: fileShield,
-    iconBg:
-      "bg-[linear-gradient(180deg,rgba(14,165,233,1)_0%,rgba(6,182,212,1)_100%)]",
-    title: "Dijital Kira Sözleşmesi",
+    id: 2,
+    title: "Kiralığı doğrula ve görselleri yükle",
     description:
-      "Dakikalar içinde oluşturulur, tüm ödemeler sözleşmeye bağlıdır.",
+      "Mülk bilgilerini ve adresini gir, fotoğrafları yükle. Sistem otomatik olarak mülkünü doğrular.",
   },
   {
-    icon: akilliOdeme,
-    iconBg: "bg-[linear-gradient(180deg,rgba(251,146,60,1)_0%,rgba(249,115,22,1)_100%)]",
-    title: "Akıllı Ödeme Takibi",
-    description: "Bekleyen, tamamlanan, geçmiş tüm işlemler tek panelde.",
-  },
-  {
-    icon: kiraAkisi,
-    iconBg: "bg-[linear-gradient(180deg,rgba(56,224,140,1)_0%,rgba(20,199,157,1)_100%)]",
-    title: "Kira Akışını Yatırıma Dönüştürme",
+    id: 3,
+    title: "Dijital kira sözleşmesini oluştur",
     description:
-      "Kira sözleşme boyunca yatırım seçenekleriyle değerlendirilebilir.",
+      "Tarafların bilgilerini gir, kira şartlarını belirle ve dijital imza ile sözleşmeyi anında onaya gönder.",
   },
   {
-    icon: tarafsiz,
-    iconBg: "bg-[linear-gradient(180deg,rgba(99,102,241,1)_0%,rgba(79,70,229,1)_100%)]",
-    title: "Tarafsız ve Şeffaf Sistem",
-    description: "Her işlem kayıtlı, her süreç izlenebilir.",
-  },
-  {
-    icon: kolayKurulum,
-    iconBg: "bg-[linear-gradient(180deg,rgba(168,85,247,1)_0%,rgba(147,51,234,1)_100%)]",
-    title: "Kolay Kurulum",
-    description: "Karmaşık süreçler yok, dakikalar içinde başlayabilirsiniz.",
-  },
-  {
-    icon: cokluPortfoy,
-    iconBg:
-      "bg-[linear-gradient(180deg,rgba(235,70,151,1)_0%,rgba(220,43,121,1)_100%)]",
-    title: "Çoklu Portföy Yönetimi",
+    id: 4,
+    title: "Depozitoyu güvenli emanete yatır",
     description:
-      "Birden fazla mülkü tek panelden yönet. Portföy görünümü, Gelir raporları, Performans analizi",
+      "Kiracı depozitoyu tarafsız Kiram emanet sistemine yatırır. Para güvende, her iki tarafça şeffaf şekilde izlenebilir.",
   },
   {
-    icon: guvenliFinansal,
-    iconBg:
-      "bg-[linear-gradient(180deg,rgba(34,210,238,1)_0%,rgba(8,184,214,1)_100%)]",
-    title: "Güvenli Finansal Altyapı",
+    id: 5,
+    title: "Kira akışını yönet ve değerlendir",
     description:
-      "KVKK uyumlu veri yapısı, Banka entegrasyonları, Güvenli ödeme altyapısı",
+      "Aylık ödemeleri takip et, depozitonu yatırımla büyüt, tüm süreçleri tek panelden yönet. Kira bitince depozito otomatik iade edilir.",
   },
 ];
 
 export const HowItWorksSection = (): JSX.Element => {
-  const { ref: headerRef, isInView: headerVisible } = useInView(0.3);
-  const { ref: gridRef, isInView: gridVisible } = useInView(0.1);
+  const [activeStep, setActiveStep] = useState(1);
 
   return (
-    <section id="ozellikler" className="relative w-full bg-[#eaf3ff] px-4 sm:px-8 py-12 sm:py-[100px]">
-      <img
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[950px] h-auto pointer-events-none opacity-30"
-        alt=""
-        src={logoPattern}
-        loading="lazy"
-        aria-hidden="true"
-      />
-
-      <div className="relative flex flex-col items-center gap-8 sm:gap-10 max-w-[1440px] mx-auto">
-        <div
-          ref={headerRef}
-          className={`flex flex-col items-center gap-3 sm:gap-4 transition-all duration-700 ${
-            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
+    <section
+      id="nasil-calisir"
+      className="w-full bg-white px-4 sm:px-8 py-12 sm:py-[100px]"
+    >
+      <div className="flex flex-col items-center gap-10 sm:gap-14 max-w-[1200px] mx-auto">
+        <div className="flex flex-col items-center gap-3 sm:gap-4">
           <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center tracking-[0] leading-[1.25]">
-            Özellikler
+            Nasıl Çalışır?
           </h2>
-
           <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-lg text-center tracking-[0] leading-[27px]">
-            Ne ekstra evrak, ne belirsiz adımlar.
+            5 Dakikada Kur, Kiram Adına Yönet
           </p>
         </div>
 
-        <div
-          ref={gridRef}
-          className="flex flex-wrap justify-center gap-4 sm:gap-6 w-full px-0 sm:px-8"
-        >
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] transition-all duration-700 ${
-                gridVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{
-                transitionDelay: gridVisible ? `${index * 100}ms` : "0ms",
-              }}
-            >
-              <Card className="bg-white rounded-2xl border-0 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 h-full">
-                <CardContent className="p-5 sm:p-[33px] flex flex-col gap-6 sm:gap-[43px]">
-                  <div className="flex items-start">
-                    <div
-                      className={`flex w-11 h-11 sm:w-14 sm:h-14 items-center justify-center rounded-[14px] ${feature.iconBg}`}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16 w-full">
+          <div className="w-full lg:w-[42%] flex items-center justify-center lg:sticky lg:top-8">
+            <img
+              src={nasilCalisir}
+              alt="Kiram uygulama ekranı"
+              className="w-[220px] sm:w-[280px] lg:w-full max-w-[320px] h-auto object-contain drop-shadow-xl"
+            />
+          </div>
+
+          <div className="flex flex-col gap-0 w-full lg:w-[58%]">
+            {steps.map((step) => {
+              const isActive = activeStep === step.id;
+              return (
+                <button
+                  key={step.id}
+                  onClick={() => setActiveStep(step.id)}
+                  className="flex items-start gap-4 sm:gap-5 py-5 sm:py-6 border-b border-[#e8edf4] last:border-b-0 text-left w-full group transition-colors"
+                >
+                  <div
+                    className={`flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 mt-0.5 ${
+                      isActive
+                        ? "bg-[#0056c7]"
+                        : "bg-[#d1d5dc] group-hover:bg-[#b0b8c8]"
+                    }`}
+                  >
+                    <span
+                      className={`[font-family:'Outfit',Helvetica] font-bold text-sm sm:text-base leading-none ${
+                        isActive ? "text-white" : "text-[#0b1f45]"
+                      }`}
                     >
-                      <img
-                        className="w-5 h-5 sm:w-7 sm:h-7"
-                        alt={feature.title}
-                        src={feature.icon}
-                      />
+                      {step.id}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5 flex-1">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span
+                        className={`[font-family:'Outfit',Helvetica] font-semibold text-base sm:text-lg leading-[1.4] transition-colors duration-300 ${
+                          isActive ? "text-[#0b1f45]" : "text-[#59606e]"
+                        }`}
+                      >
+                        {step.title}
+                      </span>
+                      {step.badge && isActive && (
+                        <span className="text-xs font-medium text-[#0056c7] bg-[#eaf3ff] px-2.5 py-0.5 rounded-full [font-family:'Outfit',Helvetica]">
+                          {step.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        isActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <p className="[font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-base leading-[1.7] pt-1">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
-
-                  <div className="flex flex-col gap-2 sm:gap-[11px]">
-                    <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-lg sm:text-2xl tracking-[0] leading-7">
-                      {feature.title}
-                    </h3>
-
-                    <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-lg tracking-[-0.31px] leading-[26px]">
-                      {feature.description}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
