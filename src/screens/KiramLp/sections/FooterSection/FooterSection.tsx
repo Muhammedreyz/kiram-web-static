@@ -1,6 +1,12 @@
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
 import patternBg from "../../../../img/Frame_4205927.png";
+
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 300 271" fill="currentColor" className={className}>
+    <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" />
+  </svg>
+);
 
 export const FooterSection = (): JSX.Element => {
   return (
@@ -32,8 +38,8 @@ export const FooterSection = (): JSX.Element => {
             <a href="#" aria-label="Facebook" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Facebook className="w-5 h-5 text-white" />
             </a>
-            <a href="#" aria-label="Twitter" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-              <Twitter className="w-5 h-5 text-white" />
+            <a href="#" aria-label="X" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+              <XIcon className="w-4 h-4 text-white" />
             </a>
             <a href="#" aria-label="Instagram" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <Instagram className="w-5 h-5 text-white" />

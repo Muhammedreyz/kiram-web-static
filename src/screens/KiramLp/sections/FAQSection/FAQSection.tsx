@@ -45,7 +45,7 @@ export const FAQSection = (): JSX.Element => {
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="w-full max-w-[1440px] mx-auto flex flex-col items-center gap-8 sm:gap-12">
+      <div className="w-full max-w-[960px] mx-auto flex flex-col items-center gap-8 sm:gap-12">
       <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center tracking-[0] leading-[1.25]">
         Sık Sorulan Sorular
       </h2>
