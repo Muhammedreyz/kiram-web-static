@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Alert, AlertDescription } from "../../../../components/ui/alert";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
@@ -8,7 +8,9 @@ import { useInView } from "../../../../hooks/useScrollAnimation";
 import patternBg from "../../../../img/pattern.png";
 import phonesImg from "../../../../img/Ultramarine.png";
 
-const ANNUAL_RATE = 0.25;
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
 const DEPOSIT_MIN = 10000;
 const DEPOSIT_MAX = 200000;
 const RENT_MIN = 5000;
@@ -20,22 +22,32 @@ function formatCurrency(value: number): string {
   return new Intl.NumberFormat("tr-TR").format(Math.round(value));
 }
 
-function calcDeposit(amount: number, months: number) {
-  const monthlyRate = ANNUAL_RATE / 12;
-  const totalValue = amount * Math.pow(1 + monthlyRate, months);
-  const earnings = totalValue - amount;
-  return { principal: amount, earnings, total: totalValue };
+function monthsToPeriod(months: number): string {
+  if (months <= 1) return "OneMonth";
+  if (months <= 3) return "ThreeMonths";
+  if (months <= 6) return "SixMonths";
+  if (months <= 12) return "OneYear";
+  return "ThreeYears";
 }
 
-function calcRent(monthlyRent: number, months: number) {
-  const monthlyRate = ANNUAL_RATE / 12;
-  let total = 0;
-  for (let i = 0; i < months; i++) {
-    total += monthlyRent * Math.pow(1 + monthlyRate, months - i);
-  }
-  const totalPaid = monthlyRent * months;
-  const earnings = total - totalPaid;
-  return { principal: totalPaid, earnings, total };
+function periodLabel(months: number): string {
+  if (months <= 1) return "1 aylık";
+  if (months <= 3) return "3 aylık";
+  if (months <= 6) return "6 aylık";
+  if (months <= 12) return "1 yıllık";
+  return "3 yıllık";
+}
+
+interface ApiResult {
+  profit: string;
+  profitRate: string;
+  investmentAfter: string;
+  investment: string;
+}
+
+function parseAmount(str: string): number {
+  const cleaned = str.replace(/[^\d.,]/g, "").replace(",", ".");
+  return parseFloat(cleaned) || 0;
 }
 
 export const HeroSection = (): JSX.Element => {
@@ -43,16 +55,67 @@ export const HeroSection = (): JSX.Element => {
   const [depositAmount, setDepositAmount] = useState(50000);
   const [rentAmount, setRentAmount] = useState(15000);
   const [duration, setDuration] = useState(12);
+  const [apiResult, setApiResult] = useState<ApiResult | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
   const { ref: heroRef, isInView: heroVisible } = useInView(0.1);
-
-  const result =
-    mode === "depozito"
-      ? calcDeposit(depositAmount, duration)
-      : calcRent(rentAmount, duration);
 
   const currentAmount = mode === "depozito" ? depositAmount : rentAmount;
   const currentMin = mode === "depozito" ? DEPOSIT_MIN : RENT_MIN;
   const currentMax = mode === "depozito" ? DEPOSIT_MAX : RENT_MAX;
+
+  const investment = mode === "depozito" ? depositAmount : rentAmount * duration;
+
+  const fetchReturn = useCallback(
+    (inv: number, months: number) => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(async () => {
+        setLoading(true);
+        setError(false);
+        try {
+          const res = await fetch(
+            `${SUPABASE_URL}/functions/v1/calculate-return`,
+            {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                investment: inv,
+                period: monthsToPeriod(months),
+              }),
+            }
+          );
+          const json = await res.json();
+          if (json.data) {
+            setApiResult({
+              profit: json.data.profit,
+              profitRate: json.data.profitRate,
+              investmentAfter: json.data.investmentAfter,
+              investment: json.data.investment,
+            });
+          } else {
+            setError(true);
+          }
+        } catch {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
+      }, 500);
+    },
+    []
+  );
+
+  useEffect(() => {
+    fetchReturn(investment, duration);
+  }, [investment, duration, fetchReturn]);
+
+  const profitAmount = apiResult ? parseAmount(apiResult.profit) : 0;
+  const totalAmount = apiResult ? parseAmount(apiResult.investmentAfter) : 0;
+  const profitRateStr = apiResult ? apiResult.profitRate : "";
 
   const handleAmountSlider = useCallback(
     (val: number[]) => {
@@ -251,14 +314,20 @@ export const HeroSection = (): JSX.Element => {
                     <AlertDescription className="[font-family:'Inter',Helvetica] text-xs sm:text-sm leading-[22.8px]">
                       <span className="font-bold text-[#121416]">Not:</span>
                       <span className="text-[#4a5568]">
-                        {" "}Getiri oranları örnek amaçlıdır. Gerçek getiriler piyasa
-                        koşullarına ve seçilen yatırım ürününe göre değişir.
+                        {" "}Getiri oranları HPH Fonu geçmiş performansına dayalıdır.
+                        Geçmiş getiriler gelecek getiriler için garanti teşkil etmez.
                       </span>
                     </AlertDescription>
                   </Alert>
                 </div>
 
-                <div className="flex flex-col gap-4 sm:gap-6 p-6 sm:p-8 lg:p-10 bg-[#0056c7]">
+                <div className="flex flex-col gap-4 sm:gap-6 p-6 sm:p-8 lg:p-10 bg-[#0056c7] relative">
+                  {loading && (
+                    <div className="absolute inset-0 bg-[#0056c7]/80 flex items-center justify-center z-10 rounded-r-2xl">
+                      <div className="w-8 h-8 border-3 border-white/30 border-t-white rounded-full animate-spin" />
+                    </div>
+                  )}
+
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-white text-lg sm:text-xl leading-7">
                     Potansiyel Getiriniz
                   </h3>
@@ -270,7 +339,7 @@ export const HeroSection = (): JSX.Element => {
                           {mode === "depozito" ? "Toplam Depozito" : "Toplam Ödenen Kira"}
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-white text-2xl sm:text-4xl leading-10 transition-all duration-500">
-                          {formatCurrency(result.principal)} TL
+                          {formatCurrency(investment)} TL
                         </p>
                       </CardContent>
                     </Card>
@@ -281,10 +350,12 @@ export const HeroSection = (): JSX.Element => {
                           Kazanç (Tahmini)
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-[#39e58f] text-2xl sm:text-4xl leading-10 transition-all duration-500">
-                          +{formatCurrency(result.earnings)} TL
+                          {error ? "---" : `+${formatCurrency(profitAmount)} TL`}
                         </p>
                         <p className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffff99] text-xs sm:text-sm leading-5">
-                          {duration} ay boyunca %{(ANNUAL_RATE * 100).toFixed(0)} yıllık getiri ile
+                          {error
+                            ? "Veriler yüklenemedi"
+                            : `HPH Fonu ${periodLabel(duration)} getiri: ${profitRateStr}`}
                         </p>
                       </CardContent>
                     </Card>
@@ -295,7 +366,7 @@ export const HeroSection = (): JSX.Element => {
                           Toplam Değer
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-white text-3xl sm:text-5xl leading-[48px] transition-all duration-500">
-                          {formatCurrency(result.total)} TL
+                          {error ? "---" : `${formatCurrency(totalAmount)} TL`}
                         </p>
                       </CardContent>
                     </Card>
