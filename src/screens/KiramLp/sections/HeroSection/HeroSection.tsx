@@ -314,8 +314,8 @@ export const HeroSection = (): JSX.Element => {
                     <AlertDescription className="[font-family:'Inter',Helvetica] text-xs sm:text-sm leading-[22.8px]">
                       <span className="font-bold text-[#121416]">Not:</span>
                       <span className="text-[#4a5568]">
-                        {" "}Getiri oranları HPH Fonu geçmiş performansına dayalıdır.
-                        Geçmiş getiriler gelecek getiriler için garanti teşkil etmez.
+                        {" "}Getiri oranları örnek amaçlıdır. Gerçek getiriler piyasa
+                        koşullarına ve seçilen yatırım ürününe göre değişir.
                       </span>
                     </AlertDescription>
                   </Alert>
@@ -355,7 +355,7 @@ export const HeroSection = (): JSX.Element => {
                         <p className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffff99] text-xs sm:text-sm leading-5">
                           {error
                             ? "Veriler yüklenemedi"
-                            : `HPH Fonu ${periodLabel(duration)} getiri: ${profitRateStr}`}
+                            : `${periodLabel(duration)} tahmini getiri: ${profitRateStr}`}
                         </p>
                       </CardContent>
                     </Card>
