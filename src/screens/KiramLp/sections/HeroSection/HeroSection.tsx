@@ -17,13 +17,12 @@ const RENT_MIN = 5000;
 const RENT_MAX = 100000;
 
 const PERIODS = [
-  { key: "Daily", label: "Gunluk", months: 0 },
   { key: "OneWeek", label: "1 Hafta", months: 0 },
   { key: "OneMonth", label: "1 Ay", months: 1 },
   { key: "ThreeMonths", label: "3 Ay", months: 3 },
   { key: "SixMonths", label: "6 Ay", months: 6 },
-  { key: "YearToDate", label: "Yil Basi", months: 0 },
-  { key: "OneYear", label: "1 Yil", months: 12 },
+  { key: "YearToDate", label: "Yılbaşından Bugüne", months: 0 },
+  { key: "OneYear", label: "1 Yıl", months: 12 },
 ] as const;
 
 function formatCurrency(value: number): string {
@@ -46,7 +45,7 @@ export const HeroSection = (): JSX.Element => {
   const [mode, setMode] = useState<"depozito" | "kira">("depozito");
   const [depositAmount, setDepositAmount] = useState(50000);
   const [rentAmount, setRentAmount] = useState(15000);
-  const [periodIndex, setPeriodIndex] = useState(6);
+  const [periodIndex, setPeriodIndex] = useState(5);
   const [apiResult, setApiResult] = useState<ApiResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -277,7 +276,7 @@ export const HeroSection = (): JSX.Element => {
 
                     <div className="flex flex-col gap-2">
                       <Label className="[font-family:'Outfit',Helvetica] font-semibold text-[#121416] text-sm leading-5">
-                        Sure
+                        Süre
                       </Label>
                       <div className="h-[56px] sm:h-[68px] px-4 flex items-center border-2 rounded-[14px] border-input bg-white">
                         <span className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-xl sm:text-2xl flex-1">
