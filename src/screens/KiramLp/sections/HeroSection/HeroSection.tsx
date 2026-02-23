@@ -15,26 +15,19 @@ const DEPOSIT_MIN = 10000;
 const DEPOSIT_MAX = 200000;
 const RENT_MIN = 5000;
 const RENT_MAX = 100000;
-const DURATION_MIN = 1;
-const DURATION_MAX = 36;
+
+const PERIODS = [
+  { key: "Daily", label: "Gunluk", months: 0 },
+  { key: "OneWeek", label: "1 Hafta", months: 0 },
+  { key: "OneMonth", label: "1 Ay", months: 1 },
+  { key: "ThreeMonths", label: "3 Ay", months: 3 },
+  { key: "SixMonths", label: "6 Ay", months: 6 },
+  { key: "YearToDate", label: "Yil Basi", months: 0 },
+  { key: "OneYear", label: "1 Yil", months: 12 },
+] as const;
 
 function formatCurrency(value: number): string {
   return new Intl.NumberFormat("tr-TR").format(Math.round(value));
-}
-
-function monthsToPeriod(months: number): string {
-  if (months <= 1) return "OneMonth";
-  if (months <= 3) return "ThreeMonths";
-  if (months <= 6) return "SixMonths";
-  if (months <= 12) return "OneYear";
-  return "OneYear";
-}
-
-function periodLabel(months: number): string {
-  if (months <= 1) return "1 aylık";
-  if (months <= 3) return "3 aylık";
-  if (months <= 6) return "6 aylık";
-  return "1 yıllık";
 }
 
 interface ApiResult {
@@ -53,21 +46,25 @@ export const HeroSection = (): JSX.Element => {
   const [mode, setMode] = useState<"depozito" | "kira">("depozito");
   const [depositAmount, setDepositAmount] = useState(50000);
   const [rentAmount, setRentAmount] = useState(15000);
-  const [duration, setDuration] = useState(12);
+  const [periodIndex, setPeriodIndex] = useState(6);
   const [apiResult, setApiResult] = useState<ApiResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout>>();
   const { ref: heroRef, isInView: heroVisible } = useInView(0.1);
 
+  const selectedPeriod = PERIODS[periodIndex];
   const currentAmount = mode === "depozito" ? depositAmount : rentAmount;
   const currentMin = mode === "depozito" ? DEPOSIT_MIN : RENT_MIN;
   const currentMax = mode === "depozito" ? DEPOSIT_MAX : RENT_MAX;
 
-  const investment = mode === "depozito" ? depositAmount : rentAmount * duration;
+  const investment =
+    mode === "depozito"
+      ? depositAmount
+      : rentAmount * Math.max(selectedPeriod.months, 1);
 
   const fetchReturn = useCallback(
-    (inv: number, months: number) => {
+    (inv: number, periodKey: string) => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
       debounceRef.current = setTimeout(async () => {
         setLoading(true);
@@ -83,7 +80,7 @@ export const HeroSection = (): JSX.Element => {
               },
               body: JSON.stringify({
                 investment: inv,
-                period: monthsToPeriod(months),
+                period: periodKey,
               }),
             }
           );
@@ -109,8 +106,8 @@ export const HeroSection = (): JSX.Element => {
   );
 
   useEffect(() => {
-    fetchReturn(investment, duration);
-  }, [investment, duration, fetchReturn]);
+    fetchReturn(investment, selectedPeriod.key);
+  }, [investment, selectedPeriod.key, fetchReturn]);
 
   const profitAmount = apiResult ? parseAmount(apiResult.profit) : 0;
   const totalAmount = apiResult ? parseAmount(apiResult.investmentAfter) : 0;
@@ -125,15 +122,14 @@ export const HeroSection = (): JSX.Element => {
     [mode, currentMin, currentMax]
   );
 
-  const handleDurationSlider = useCallback((val: number[]) => {
-    const mapped = DURATION_MIN + (val[0] / 100) * (DURATION_MAX - DURATION_MIN);
-    setDuration(Math.round(mapped));
+  const handlePeriodSlider = useCallback((val: number[]) => {
+    const idx = Math.round((val[0] / 100) * (PERIODS.length - 1));
+    setPeriodIndex(Math.min(Math.max(idx, 0), PERIODS.length - 1));
   }, []);
 
   const amountSliderValue =
     ((currentAmount - currentMin) / (currentMax - currentMin)) * 100;
-  const durationSliderValue =
-    ((duration - DURATION_MIN) / (DURATION_MAX - DURATION_MIN)) * 100;
+  const periodSliderValue = (periodIndex / (PERIODS.length - 1)) * 100;
 
   return (
     <>
@@ -281,29 +277,26 @@ export const HeroSection = (): JSX.Element => {
 
                     <div className="flex flex-col gap-2">
                       <Label className="[font-family:'Outfit',Helvetica] font-semibold text-[#121416] text-sm leading-5">
-                        Süre (Ay)
+                        Sure
                       </Label>
                       <div className="h-[56px] sm:h-[68px] px-4 flex items-center border-2 rounded-[14px] border-input bg-white">
                         <span className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-xl sm:text-2xl flex-1">
-                          {duration}
-                        </span>
-                        <span className="[font-family:'Outfit',Helvetica] font-bold text-[#4a5568] text-lg sm:text-xl">
-                          ay
+                          {selectedPeriod.label}
                         </span>
                       </div>
                       <Slider
-                        value={[durationSliderValue]}
-                        onValueChange={handleDurationSlider}
+                        value={[periodSliderValue]}
+                        onValueChange={handlePeriodSlider}
                         max={100}
                         step={1}
                         className="w-full"
                       />
                       <div className="flex justify-between">
                         <span className="[font-family:'Outfit',Helvetica] font-normal text-[#4a5568] text-xs">
-                          {DURATION_MIN} ay
+                          {PERIODS[0].label}
                         </span>
                         <span className="[font-family:'Outfit',Helvetica] font-normal text-[#4a5568] text-xs">
-                          {DURATION_MAX} ay
+                          {PERIODS[PERIODS.length - 1].label}
                         </span>
                       </div>
                     </div>
@@ -354,7 +347,7 @@ export const HeroSection = (): JSX.Element => {
                         <p className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffff99] text-xs sm:text-sm leading-5">
                           {error
                             ? "Veriler yüklenemedi"
-                            : `${periodLabel(duration)} tahmini getiri: ${profitRateStr}`}
+                            : `${selectedPeriod.label} tahmini getiri: ${profitRateStr}`}
                         </p>
                       </CardContent>
                     </Card>
