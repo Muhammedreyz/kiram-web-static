@@ -1,212 +1,94 @@
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
+import { Card, CardContent } from "../../../../components/ui/card";
 import { useInView } from "../../../../hooks/useScrollAnimation";
-import akilliOdemeIcon from "../../../../img/akilli-odeme.svg";
-import fileShieldIcon from "../../../../img/file-shield.svg";
-import kiraAkisiIcon from "../../../../img/kira-akisi.svg";
-import cokluPortfoyIcon from "../../../../img/coklu-portfoy.svg";
-import kolayKurulumIcon from "../../../../img/kolay-kurulum.svg";
-import tarafsizIcon from "../../../../img/tarafsiz.svg";
-import bankaGuvencesiIcon from "../../../../img/banka-guvencesi.svg";
+import appStore from "../../../../img/app-store.svg";
+import googlePlay from "../../../../img/google-play.svg";
+import footerMockup from "../../../../img/footer-mockup.png";
+import tickIcon from "../../../../img/tick.svg";
 
 const features = [
   {
-    icon: akilliOdemeIcon,
-    iconBg: "#16a34a",
-    title: "Akıllı Kira Tahsilatı",
-    desc: "Bekleyen, tamamlanan, gecikmiş tüm işlemler tek panelde. Ödemeler otomatik takip edilir.",
+    column: 1,
+    items: [
+      { text: "Anında Bildirim" },
+      { text: "Güvenli İşlemler" },
+    ],
   },
   {
-    icon: fileShieldIcon,
-    iconBg: "#0056c7",
-    title: "Depozito Güvence Sistemi",
-    desc: "Depozito taraflardan bağımsız sistemde tutulur, şeffaf şekilde yönetilir.",
-  },
-  {
-    icon: kiraAkisiIcon,
-    iconBg: "#7c3aed",
-    title: "Kira Akışını Yatırıma Dönüştürme",
-    desc: "Kira ve depozito akışları yatırım araçları ile entegre edilebilir.",
-  },
-  {
-    icon: cokluPortfoyIcon,
-    iconBg: "#0056c7",
-    title: "Dijital Kira Sözleşmesi",
-    desc: "Dakikalar içinde oluşturulur, tüm ödemeler sözleşmeye bağlıdır.",
-  },
-  {
-    icon: tarafsizIcon,
-    iconBg: "#0b2a5c",
-    title: "Tarafsız ve Şeffaf Sistem",
-    desc: "Her işlem kayıtlı, her süreç izlenebilir.",
-  },
-  {
-    icon: kolayKurulumIcon,
-    iconBg: "#16a34a",
-    title: "Kolay Kurulum",
-    desc: "Karmaşık süreçler yok, dakikalar içinde başlayabilirsiniz.",
-  },
-  {
-    icon: bankaGuvencesiIcon,
-    iconBg: "#b45309",
-    title: "Çoklu Portföy Yönetimi",
-    desc: "Birden fazla mülkü tek panelden yönetin. Gelir raporları ve performans çıktıları.",
+    column: 2,
+    items: [
+      { text: "Dijital Belgeler" },
+      { text: "7/24 Erişim" },
+    ],
   },
 ];
 
 export const FeaturesSection = (): JSX.Element => {
-  const { ref, isInView } = useInView(0.15);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { ref, isInView } = useInView(0.2);
 
   return (
-    <section
-      ref={ref}
-      id="ozellikler"
-      className={`w-full bg-[#1a1a2e] py-16 sm:py-24 overflow-hidden transition-all duration-700 ${
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-    >
-      <style>{`
-        .features-swiper {
-          padding: 20px 0;
-        }
-        .features-swiper .swiper-wrapper {
-          align-items: center;
-        }
-        .features-swiper .swiper-slide {
-          background: #bbbbc4;
-          border-radius: 1rem;
-          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-          overflow: hidden;
-          width: 260px !important;
-          opacity: 0.8;
-        }
-        .features-swiper .swiper-slide-active {
-          background: #ffffff;
-          box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-          border-radius: 1.25rem;
-          width: 420px !important;
-          opacity: 1;
-          z-index: 10;
-        }
-        .features-swiper .swiper-slide-prev,
-        .features-swiper .swiper-slide-next {
-          opacity: 0.85;
-        }
-        .features-swiper .swiper-pagination {
-          position: relative;
-          margin-top: 2rem;
-          display: flex;
-          justify-content: center;
-          gap: 0.5rem;
-        }
-        .features-swiper .swiper-pagination-bullet {
-          width: 10px;
-          height: 10px;
-          background: rgba(255,255,255,0.3);
-          opacity: 1;
-          border-radius: 9999px;
-          transition: all 0.3s ease;
-        }
-        .features-swiper .swiper-pagination-bullet-active {
-          width: 32px;
-          height: 10px;
-          background: #0056c7;
-          border-radius: 9999px;
-        }
-        @media (max-width: 640px) {
-          .features-swiper .swiper-slide {
-            width: 200px !important;
-          }
-          .features-swiper .swiper-slide-active {
-            width: 280px !important;
-          }
-        }
-      `}</style>
-
-      <Swiper
-        modules={[EffectCoverflow, Pagination]}
-        effect="coverflow"
-        grabCursor
-        centeredSlides
-        loop
-        slidesPerView={3}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 80,
-          depth: 200,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        pagination={{ clickable: true }}
-        initialSlide={1}
-        onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.realIndex)}
-        breakpoints={{
-          0: { slidesPerView: 1.4 },
-          480: { slidesPerView: 1.8 },
-          768: { slidesPerView: 3 },
-        }}
-        className="features-swiper"
+    <section className="flex flex-col w-full items-center gap-2.5 px-4 sm:px-8 lg:px-16 py-12 sm:py-16 bg-white">
+      <div className="w-full max-w-[1440px] mx-auto">
+      <Card
+        ref={ref}
+        className={`relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-[linear-gradient(332deg,rgba(235,244,255,1)_60%,rgba(246,246,249,1)_100%)] border-0 shadow-none transition-all duration-700 ${
+          isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
       >
-        {features.map((feature, i) => {
-          const isActive = i === activeIndex;
-          return (
-            <SwiperSlide key={i}>
-              <div
-                className={`flex flex-col items-center text-center transition-all duration-500 ${
-                  isActive
-                    ? "px-8 py-10 sm:px-10 sm:py-12"
-                    : "px-4 py-5 sm:px-5 sm:py-6"
-                }`}
-              >
-                <div
-                  className="flex items-center justify-center rounded-2xl mb-4"
-                  style={{
-                    width: isActive ? 96 : 48,
-                    height: isActive ? 96 : 48,
-                    backgroundColor: feature.iconBg,
-                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                >
-                  <img
-                    src={feature.icon}
-                    alt=""
-                    aria-hidden="true"
-                    style={{
-                      width: isActive ? 48 : 24,
-                      height: isActive ? 48 : 24,
-                      transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                  />
-                </div>
-                <h3
-                  className={`[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] leading-tight transition-all duration-500 ${
-                    isActive
-                      ? "text-xl sm:text-2xl mb-3"
-                      : "text-sm sm:text-base mb-2"
-                  }`}
-                >
-                  {feature.title}
-                </h3>
-                <p
-                  className={`[font-family:'Outfit',Helvetica] font-normal text-[#515966] leading-[1.6] transition-all duration-500 ${
-                    isActive
-                      ? "text-sm sm:text-base"
-                      : "text-xs sm:text-sm"
-                  }`}
-                >
-                  {feature.desc}
+        <CardContent className="relative w-full p-0">
+          <div className="flex flex-col lg:flex-row items-center lg:items-stretch min-h-[400px] sm:min-h-[520px]">
+            <div className="relative w-full lg:w-[45%] min-h-[250px] sm:min-h-[350px] lg:min-h-0 flex items-end justify-center lg:justify-start overflow-hidden">
+              <img
+                className="w-[50%] sm:w-[40%] lg:w-[70%] h-auto object-contain lg:absolute lg:bottom-0 lg:left-[8%]"
+                alt="Kiram mobil uygulama - güvenli işlemler, anında bildirim, dijital belgeler"
+                src={footerMockup}
+                loading="lazy"
+              />
+            </div>
+
+            <div className="flex flex-col w-full lg:w-[55%] items-center lg:items-start gap-5 sm:gap-6 p-6 sm:p-8 lg:p-0 lg:py-12 lg:pr-16">
+              <div className="flex flex-col items-center lg:items-start gap-2">
+                <h2 className="[font-family:'Kumbh_Sans',Helvetica] font-bold text-black text-2xl sm:text-[32px] lg:text-[40px] tracking-[0] leading-[1.2] text-center lg:text-left">
+                  Kiram'ı <br />
+                  Cebinize Taşıyın
+                </h2>
+
+                <p className="w-full max-w-[472px] [font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-lg tracking-[0] leading-[26px] text-center lg:text-left">
+                  Kira sözleşmelerinizi, depozitolarınızı ve kira ödemelerinizi
+                  her yerden yönetin.
                 </p>
               </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+
+              <div className="flex items-start gap-8 sm:gap-16 w-full justify-center lg:justify-start">
+                {features.map((column) => (
+                  <div
+                    key={column.column}
+                    className="flex flex-col items-start gap-3 sm:gap-3.5"
+                  >
+                    {column.items.map((item, index) => (
+                      <div
+                        key={`${column.column}-${index}`}
+                        className="flex items-center gap-2 sm:gap-3"
+                      >
+                        <img className="w-5 h-5 sm:w-6 sm:h-6" alt="Icon" src={tickIcon} />
+                        <span className="[font-family:'Kumbh_Sans',Helvetica] font-semibold text-slate-900 text-sm sm:text-lg lg:text-xl tracking-[0] leading-7 whitespace-nowrap">
+                          {item.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 sm:gap-[22px]">
+                <img className="h-9 sm:h-12" alt="App Store" src={appStore} />
+                <img className="h-9 sm:h-12" alt="Google Play" src={googlePlay} />
+              </div>
+            </div>
+          </div>
+
+        </CardContent>
+      </Card>
+      </div>
     </section>
   );
 };
