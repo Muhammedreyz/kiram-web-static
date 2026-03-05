@@ -45,7 +45,11 @@ function parseAmount(str: string): number {
   return parseFloat(cleaned) || 0;
 }
 
-export const HeroSection = (): JSX.Element => {
+interface HeroSectionProps {
+  onOpenModal: () => void;
+}
+
+export const HeroSection = ({ onOpenModal }: HeroSectionProps): JSX.Element => {
   const [mode, setMode] = useState<"depozito" | "kira">("depozito");
   const [depositAmount, setDepositAmount] = useState(50000);
   const [rentAmount, setRentAmount] = useState(15000);
@@ -174,8 +178,11 @@ export const HeroSection = (): JSX.Element => {
                 finansal olarak verimli hale getirir.
               </p>
               <div>
-                <Button className="h-[52px] sm:h-14 px-7 sm:px-8 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl [font-family:'Outfit',Helvetica] font-semibold text-white text-base sm:text-lg tracking-[0.01em] transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-orange-200/50">
-                  Sözleşmeni Oluştur
+                <Button
+                  onClick={onOpenModal}
+                  className="h-[52px] sm:h-14 px-7 sm:px-8 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl [font-family:'Outfit',Helvetica] font-semibold text-white text-base sm:text-lg tracking-[0.01em] transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-orange-200/50"
+                >
+                  Erken Erişim İçin Başvur
                 </Button>
               </div>
             </div>

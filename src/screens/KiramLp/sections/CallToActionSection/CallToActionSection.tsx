@@ -9,7 +9,11 @@ const features = [
   { text: "Dakikalar içinde başlayın" },
 ];
 
-export const CallToActionSection = (): JSX.Element => {
+interface CallToActionSectionProps {
+  onOpenModal: () => void;
+}
+
+export const CallToActionSection = ({ onOpenModal }: CallToActionSectionProps): JSX.Element => {
   const { ref, isInView } = useInView(0.2);
 
   return (
@@ -40,9 +44,12 @@ export const CallToActionSection = (): JSX.Element => {
           isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <Button className="h-12 sm:h-16 px-4 sm:px-6 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl transition-transform duration-300 hover:scale-105 active:scale-95">
+        <Button
+          onClick={onOpenModal}
+          className="h-12 sm:h-16 px-4 sm:px-6 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl transition-transform duration-300 hover:scale-105 active:scale-95"
+        >
           <span className="[font-family:'Outfit',Helvetica] font-semibold text-white text-base sm:text-lg lg:text-[22px] tracking-[0.44px] leading-[22px] whitespace-nowrap">
-            Sözleşmeni Oluştur
+            Erken Erişim İçin Başvur
           </span>
         </Button>
       </div>
