@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
 import patternBg from "../../../../img/Frame_4205927.png";
+import tcmbLogo from "../../../../img/tcmb_1.png";
 
 const XIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 300 271" fill="currentColor" className={className}>
@@ -54,11 +55,11 @@ export const FooterSection = (): JSX.Element => {
       <div className="relative z-10 flex flex-col w-full border-t border-[#ffffff1f]">
         <div className="flex flex-col sm:flex-row items-center sm:items-start sm:justify-between gap-4 py-6 w-full max-w-[1200px] mx-auto">
           <div className="flex items-start gap-3">
-            <div className="w-[80px] sm:w-[116px] h-[34px] sm:h-12 bg-white/90 rounded flex items-center justify-center flex-shrink-0 px-2">
-              <span className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-[8px] sm:text-[10px] leading-tight text-center">
-                TCMB
-              </span>
-            </div>
+            <img
+              src={tcmbLogo}
+              alt="TCMB - Türkiye Cumhuriyeti Merkez Bankası"
+              className="w-[80px] sm:w-[116px] h-auto object-contain flex-shrink-0"
+            />
             <p className="max-w-[300px] [font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[10px] sm:text-[11px] tracking-[0] leading-[15px]">
               Kiram, Türkiye Cumhuriyeti Merkez Bankası tarafından 6493 sayılı
               Kanun uyarınca lisanslandırılmış bir elektronik para

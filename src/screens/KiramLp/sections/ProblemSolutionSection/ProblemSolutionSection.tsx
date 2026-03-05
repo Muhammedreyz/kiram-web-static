@@ -1,5 +1,5 @@
-import { CircleAlert as AlertCircle, CircleCheck as CheckCircle2 } from "lucide-react";
 import { useInView } from "../../../../hooks/useScrollAnimation";
+import warnIcon from "../../../../img/warn.svg";
 
 const problems = [
   "Kiracı riskini görmek zor",
@@ -30,7 +30,7 @@ export const ProblemSolutionSection = (): JSX.Element => {
           <div className="flex flex-col gap-4">
             {problems.map((item, i) => (
               <div key={i} className="flex items-center gap-3">
-                <AlertCircle className="w-5 h-5 text-[#dc2626] flex-shrink-0" />
+                <img src={warnIcon} alt="" className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-base leading-relaxed">
                   {item}
                 </p>
@@ -51,14 +51,9 @@ export const ProblemSolutionSection = (): JSX.Element => {
           <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-xl sm:text-2xl lg:text-[28px] leading-tight mb-6">
             Kiram, kiralama sürecinin tüm aşamalarını dijitalleştirerek güvenli ve şeffaf bir altyapı sunar.
           </h3>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-[#16a34a] flex-shrink-0 mt-0.5" />
-              <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-base leading-relaxed">
-                Sözleşme, ödeme, depozito ve yatırım süreçleri tek platformda yönetilir.
-              </p>
-            </div>
-          </div>
+          <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm sm:text-base leading-relaxed">
+            Sözleşme, ödeme, depozito ve yatırım süreçleri tek platformda yönetilir.
+          </p>
         </div>
       </div>
     </section>
