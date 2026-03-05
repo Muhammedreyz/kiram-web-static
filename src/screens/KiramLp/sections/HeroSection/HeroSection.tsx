@@ -10,6 +10,7 @@ import spkIcon from "../../../../img/spk-mevzuatina-uygun.svg";
 import lisansliIcon from "../../../../img/lisansli-kurumlar.svg";
 import bankaIcon from "../../../../img/banka-guvencesi.svg";
 import fonlarIcon from "../../../../img/dusuk-riskli-fonlar.svg";
+import iconCopySvg from "../../../../img/Icon copy.svg";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -355,7 +356,8 @@ export const HeroSection = (): JSX.Element => {
 
                     <Card className="bg-[#ffffff1a] border border-[#ffffff33] rounded-2xl">
                       <CardContent className="flex flex-col justify-center gap-1 px-5 py-3 sm:py-4 min-h-[90px] sm:min-h-[120px]">
-                        <span className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffffcc] text-sm sm:text-base leading-5">
+                        <span className="[font-family:'Outfit',Helvetica] font-normal text-[#ffffffcc] text-sm sm:text-base leading-5 flex items-center gap-1.5">
+                          <img src={iconCopySvg} alt="" className="w-5 h-5" />
                           Kazanç (Tahmini)
                         </span>
                         <p className="[font-family:'Outfit',Helvetica] font-bold text-[#39e58f] text-2xl sm:text-4xl leading-10 transition-all duration-500">
