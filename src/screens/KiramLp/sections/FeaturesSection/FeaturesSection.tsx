@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useInView } from "../../../../hooks/useScrollAnimation";
 import akilliOdemeIcon from "../../../../img/akilli-odeme.svg";
 import fileShieldIcon from "../../../../img/file-shield.svg";
@@ -49,132 +49,104 @@ const features = [
 export const FeaturesSection = (): JSX.Element => {
   const { ref, isInView } = useInView(0.15);
   const [activeIndex, setActiveIndex] = useState(1);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const startScrollLeft = useRef(0);
 
-  const scrollToIndex = useCallback((index: number) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.children[index] as HTMLElement | undefined;
-    if (!card) return;
-    const scrollTarget =
-      card.offsetLeft - track.clientWidth / 2 + card.offsetWidth / 2;
-    track.scrollTo({ left: scrollTarget, behavior: "smooth" });
-    setActiveIndex(index);
-  }, []);
+  const getPrev = useCallback(
+    () => (activeIndex - 1 + features.length) % features.length,
+    [activeIndex]
+  );
+  const getNext = useCallback(
+    () => (activeIndex + 1) % features.length,
+    [activeIndex]
+  );
 
-  const findClosest = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return 0;
-    const center = track.scrollLeft + track.clientWidth / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    Array.from(track.children).forEach((child, i) => {
-      const el = child as HTMLElement;
-      const cardCenter = el.offsetLeft + el.offsetWidth / 2;
-      const dist = Math.abs(center - cardCenter);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
-    });
-    return closest;
-  }, []);
+  const goTo = (index: number) => setActiveIndex(index);
 
-  const handleScroll = useCallback(() => {
-    if (isDragging.current) return;
-    setActiveIndex(findClosest());
-  }, [findClosest]);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.addEventListener("scroll", handleScroll, { passive: true });
-    return () => track.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => scrollToIndex(1), 150);
-    return () => clearTimeout(timer);
-  }, [scrollToIndex]);
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    isDragging.current = true;
-    startX.current = e.clientX;
-    startScrollLeft.current = trackRef.current?.scrollLeft ?? 0;
-  };
-
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging.current || !trackRef.current) return;
-    e.preventDefault();
-    trackRef.current.scrollLeft =
-      startScrollLeft.current - (e.clientX - startX.current);
-  };
-
-  const handlePointerUp = () => {
-    if (!isDragging.current) return;
-    isDragging.current = false;
-    const closest = findClosest();
-    scrollToIndex(closest);
-  };
+  const prev = getPrev();
+  const next = getNext();
 
   return (
     <section
       ref={ref}
-      className={`w-full bg-[#0f1a2e] py-16 sm:py-20 overflow-hidden transition-all duration-700 ${
+      className={`w-full bg-[#1e1e2e] py-16 sm:py-24 overflow-hidden transition-all duration-700 ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div
-        ref={trackRef}
-        className="flex gap-5 sm:gap-6 overflow-x-auto scrollbar-hide px-4 sm:px-8 lg:px-16 touch-pan-x"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-      >
-        {features.map((feature, i) => {
-          const isActive = i === activeIndex;
-          return (
+      <div className="relative w-full max-w-[1000px] mx-auto h-[320px] sm:h-[360px] px-4">
+        <div
+          onClick={() => goTo(prev)}
+          className="absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 w-[200px] sm:w-[260px] lg:w-[300px] bg-[#c8c8d0] rounded-2xl cursor-pointer transition-all duration-500 ease-out z-0 opacity-70 -translate-x-[15%] sm:-translate-x-[10%]"
+        >
+          <div className="flex flex-col items-center text-center gap-3 p-5 sm:p-6">
             <div
-              key={i}
-              onClick={() => scrollToIndex(i)}
-              className={`flex-shrink-0 w-[240px] sm:w-[280px] lg:w-[300px] rounded-2xl bg-white cursor-pointer transition-all duration-500 ease-out ${
-                isActive
-                  ? "scale-[1.08] shadow-[0_20px_60px_rgba(0,0,0,0.3)] z-10"
-                  : "scale-[0.92] opacity-60"
-              }`}
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${features[prev].iconBg} flex items-center justify-center`}
             >
-              <div className="flex flex-col items-center text-center gap-3 sm:gap-4 p-6 sm:p-8">
-                <div
-                  className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${feature.iconBg} flex items-center justify-center`}
-                >
-                  <img
-                    src={feature.icon}
-                    alt=""
-                    className="w-7 h-7"
-                    aria-hidden="true"
-                  />
-                </div>
-                <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-sm sm:text-base lg:text-lg leading-tight">
-                  {feature.title}
-                </h3>
-                <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-xs sm:text-sm leading-[1.6]">
-                  {feature.desc}
-                </p>
-              </div>
+              <img
+                src={features[prev].icon}
+                alt=""
+                className="w-7 h-7"
+                aria-hidden="true"
+              />
             </div>
-          );
-        })}
+            <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-sm sm:text-base leading-tight">
+              {features[prev].title}
+            </h3>
+            <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-xs sm:text-sm leading-[1.6]">
+              {features[prev].desc}
+            </p>
+          </div>
+        </div>
+
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[340px] lg:w-[400px] bg-white rounded-2xl shadow-[0_25px_80px_rgba(0,0,0,0.4)] z-20 transition-all duration-500 ease-out">
+          <div className="flex flex-col items-center text-center gap-4 sm:gap-5 p-7 sm:p-10">
+            <div
+              className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${features[activeIndex].iconBg} flex items-center justify-center`}
+            >
+              <img
+                src={features[activeIndex].icon}
+                alt=""
+                className="w-8 h-8 sm:w-9 sm:h-9"
+                aria-hidden="true"
+              />
+            </div>
+            <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-lg sm:text-xl lg:text-2xl leading-tight">
+              {features[activeIndex].title}
+            </h3>
+            <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-sm sm:text-base leading-[1.6]">
+              {features[activeIndex].desc}
+            </p>
+          </div>
+        </div>
+
+        <div
+          onClick={() => goTo(next)}
+          className="absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 w-[200px] sm:w-[260px] lg:w-[300px] bg-[#c8c8d0] rounded-2xl cursor-pointer transition-all duration-500 ease-out z-0 opacity-70 translate-x-[15%] sm:translate-x-[10%]"
+        >
+          <div className="flex flex-col items-center text-center gap-3 p-5 sm:p-6">
+            <div
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${features[next].iconBg} flex items-center justify-center`}
+            >
+              <img
+                src={features[next].icon}
+                alt=""
+                className="w-7 h-7"
+                aria-hidden="true"
+              />
+            </div>
+            <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-sm sm:text-base leading-tight">
+              {features[next].title}
+            </h3>
+            <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-xs sm:text-sm leading-[1.6]">
+              {features[next].desc}
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10">
+      <div className="flex items-center justify-center gap-2 mt-10 sm:mt-12">
         {features.map((_, i) => (
           <button
             key={i}
-            onClick={() => scrollToIndex(i)}
+            onClick={() => goTo(i)}
             className={`rounded-full transition-all duration-300 ${
               i === activeIndex
                 ? "w-8 h-2.5 bg-[#0056c7]"
