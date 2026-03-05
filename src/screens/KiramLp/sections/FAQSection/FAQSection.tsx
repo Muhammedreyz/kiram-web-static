@@ -11,31 +11,31 @@ const faqData = [
     id: "item-1",
     question: "Kiram güvenli mi?",
     answer:
-      "Evet. Kiram, kullanıcı verilerini ve işlemleri korumak için yüksek güvenlik standartları ile çalışır. Tüm veriler KVKK uyumlu şekilde saklanır ve işlenir kuruluşlarla çalışılmaktadır. Bu sayede depozitonuz güvenli, şeffaf ve denetlenebilir bir şekilde yönetilir. Tüm sözleşmeler, belgeleri ve işlemler sistemde kayıt altına alınır ve anlaşma ürüne kolay erişim sağlanır.",
+      "Evet. Kiram, kullanıcı verilerini ve işlemleri korumak için yüksek güvenlik standartları ile çalışır. Tüm veriler KVKK uyumlu şekilde saklanır ve işlemler güvenli altyapı üzerinde gerçekleştirilir.\n\nFinansal işlemler ise SPK düzenlemelerine uygun yatırım ürünleri ve lisanslı elektronik para kuruluşları üzerinden yürütülür. Bu sayede kira ödemeleri ve depozito süreçleri güvenli, şeffaf ve denetlenebilir bir şekilde yönetilir.\n\nTüm sözleşmeler, ödemeler ve işlemler sistemde kayıt altına alınır ve yetkisiz erişime karşı korunur.",
   },
   {
     id: "item-2",
     question: "Depozito nerede tutulur?",
     answer:
-      "Depozitolar, Kiram'ın tarafsız emanet sisteminde tutulur. Ne kiracının ne de ev sahibinin kişisel hesabında bulunmaz. Lisanslı kuruluşlar aracılığıyla güvenli bir şekilde saklanır.",
+      "Depozito, mülk sahibine ait saklama hesabında tutulur ve kira süresi boyunca güvenli yatırım fonlarında değerlendirilebilir. Depozitonun iade ve kullanım şartları kira sözleşmesinde açık şekilde belirtilir.\n\nMülk sahibi, kiracının onayı olmadan depozitoyu kullanamaz. Kira sözleşmesi sona erdiğinde depozito, sözleşmede belirlenen şartlara göre kiracıya iade edilir veya tarafların mutabakatına göre mahsuplaşma yapılır.",
   },
   {
     id: "item-3",
     question: "Kiram üzerinden yapılan sözleşmeler yasal mı?",
     answer:
-      "Evet. Kiram üzerinden oluşturulan dijital kira sözleşmeleri, Türk hukuku çerçevesinde geçerlidir ve yasal bağlayıcılığa sahiptir.",
+      "Kiram üzerinden oluşturulan kira sözleşmeleri dijital ortamda kayıt altına alınır ve tarafların onayı ile saklanır. Belgeler gerektiğinde erişilebilir ve yürürlükteki mevzuata uygun şekilde kullanılabilir.",
   },
   {
     id: "item-4",
     question: "Ev sahibi veya kiracı ödeme konusunda sorun çıkarırsa ne olur?",
     answer:
-      "Kiram sistemi, sözleşmeye bağlı otomatik ödeme takibi yapar. Gecikme veya ödenmeme durumunda her iki tarafa bildirim gönderilir ve süreç kayıt altında tutulur.",
+      "Kiram, kira ödemelerini ve sözleşme süreçlerini kayıt altına alarak taraflar arasında şeffaf bir yapı sağlar. Ödeme geçmişi, sözleşme detayları ve işlem kayıtları sistemde tutulur ve olası anlaşmazlıklarda referans olarak kullanılabilir.",
   },
   {
     id: "item-5",
     question: "Kiram'ı kullanmak zor mu?",
     answer:
-      "Hayır. Kiram, kullanıcı dostu arayüzüyle dakikalar içinde kayıt olup sözleşme oluşturmanıza olanak tanır. Teknik bilgi gerektirmez.",
+      "Hayır. Kiram, kira süreçlerini herkes için kolaylaştırmak amacıyla tasarlanmıştır. Hesabınızı oluşturduktan sonra birkaç dakika içinde sözleşme oluşturabilir, depozito ve kira ödemelerinizi tek panelden yönetebilirsiniz.",
   },
 ];
 
@@ -74,10 +74,12 @@ export const FAQSection = (): JSX.Element => {
               </span>
             </AccordionTrigger>
             {item.answer && (
-              <AccordionContent className="px-5 sm:px-8 pt-2 pb-4 sm:pb-6">
-                <p className="[font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-lg tracking-[0] leading-[26px]">
-                  {item.answer}
-                </p>
+              <AccordionContent className="px-5 sm:px-8 pt-2 pb-4 sm:pb-6 flex flex-col gap-4">
+                {item.answer.split("\n\n").map((paragraph, i) => (
+                  <p key={i} className="[font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-lg tracking-[0] leading-[26px]">
+                    {paragraph}
+                  </p>
+                ))}
               </AccordionContent>
             )}
           </AccordionItem>

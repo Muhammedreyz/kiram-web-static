@@ -130,7 +130,7 @@ export const HowItWorksSection = (): JSX.Element => {
             slidesPerView={1}
             centeredSlides
             loop
-            spaceBetween={-5}
+            spaceBetween={0}
             speed={500}
             autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
             pagination={{ clickable: true, el: ".features-pagination" }}
@@ -143,14 +143,13 @@ export const HowItWorksSection = (): JSX.Element => {
             {features.map((feature, index) => (
               <SwiperSlide key={index} className="!h-auto">
                 {({ isActive }) => (
-                  <div className="flex items-center justify-center py-10">
+                  <div className="py-10 px-1">
                     <Card
                       className={`rounded-2xl border-0 transition-all duration-500 w-full ${
                         isActive
-                          ? "bg-white shadow-[0_8px_40px_rgba(0,0,0,0.12)] scale-100 opacity-100"
-                          : "bg-white/80 shadow-sm scale-[0.88] opacity-50"
+                          ? "bg-white shadow-[0_8px_40px_rgba(0,0,0,0.12)] scale-105 opacity-100 relative z-10"
+                          : "bg-white/80 shadow-sm scale-100 opacity-50"
                       }`}
-                      style={{ maxWidth: isActive ? "560px" : "480px", margin: "0 auto" }}
                     >
                       <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-6 sm:p-10" : "p-5 sm:p-6"}`}>
                         <div
