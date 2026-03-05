@@ -138,48 +138,50 @@ export const HowItWorksSection = (): JSX.Element => {
               640: { slidesPerView: 1.8 },
               1024: { slidesPerView: 2.6 },
             }}
-            className="!px-4 sm:!px-16 lg:!px-20"
+            className="features-swiper"
           >
             {features.map((feature, index) => (
-              <SwiperSlide key={index} className="!h-auto py-8">
+              <SwiperSlide key={index} className="!h-auto">
                 {({ isActive }) => (
-                  <Card
-                    className={`rounded-2xl border-0 transition-all duration-500 mx-auto ${
-                      isActive
-                        ? "bg-white shadow-2xl scale-100 opacity-100"
-                        : "bg-white/80 shadow-sm scale-[0.88] opacity-50"
-                    }`}
-                    style={{ maxWidth: isActive ? "560px" : "480px" }}
-                  >
-                    <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-6 sm:p-10" : "p-5 sm:p-6"}`}>
-                      <div
-                        className="flex items-center justify-center rounded-[18px] w-[96px] h-[96px] transition-all duration-500"
-                        style={iconBgStyles[feature.iconBgKey]}
-                      >
-                        <img
-                          className="w-12 h-12"
-                          alt={feature.title}
-                          src={feature.icon}
-                        />
-                      </div>
-                      <div className="flex flex-col gap-2 sm:gap-3">
-                        <h3
-                          className={`[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] tracking-[0] leading-7 transition-all duration-500 ${
-                            isActive ? "text-xl sm:text-2xl" : "text-lg"
-                          }`}
+                  <div className="flex items-center justify-center py-10">
+                    <Card
+                      className={`rounded-2xl border-0 transition-all duration-500 w-full ${
+                        isActive
+                          ? "bg-white shadow-[0_8px_40px_rgba(0,0,0,0.12)] scale-100 opacity-100"
+                          : "bg-white/80 shadow-sm scale-[0.88] opacity-50"
+                      }`}
+                      style={{ maxWidth: isActive ? "560px" : "480px", margin: "0 auto" }}
+                    >
+                      <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-6 sm:p-10" : "p-5 sm:p-6"}`}>
+                        <div
+                          className="flex items-center justify-center rounded-[18px] w-[96px] h-[96px] transition-all duration-500"
+                          style={iconBgStyles[feature.iconBgKey]}
                         >
-                          {feature.title}
-                        </h3>
-                        <p
-                          className={`[font-family:'Outfit',Helvetica] font-medium text-[#36466d] tracking-[-0.31px] leading-[24px] transition-all duration-500 ${
-                            isActive ? "text-sm sm:text-base" : "text-xs sm:text-sm"
-                          }`}
-                        >
-                          {feature.description}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                          <img
+                            className="w-12 h-12"
+                            alt={feature.title}
+                            src={feature.icon}
+                          />
+                        </div>
+                        <div className="flex flex-col gap-2 sm:gap-3">
+                          <h3
+                            className={`[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] tracking-[0] leading-7 transition-all duration-500 ${
+                              isActive ? "text-xl sm:text-2xl" : "text-lg"
+                            }`}
+                          >
+                            {feature.title}
+                          </h3>
+                          <p
+                            className={`[font-family:'Outfit',Helvetica] font-medium text-[#36466d] tracking-[-0.31px] leading-[24px] transition-all duration-500 ${
+                              isActive ? "text-sm sm:text-base" : "text-xs sm:text-sm"
+                            }`}
+                          >
+                            {feature.description}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 )}
               </SwiperSlide>
             ))}
@@ -190,6 +192,12 @@ export const HowItWorksSection = (): JSX.Element => {
       </div>
 
       <style>{`
+        .features-swiper .swiper-wrapper {
+          align-items: center;
+        }
+        .features-swiper .swiper-slide {
+          overflow: visible;
+        }
         .features-pagination .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
