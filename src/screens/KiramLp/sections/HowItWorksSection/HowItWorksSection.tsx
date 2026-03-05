@@ -92,7 +92,7 @@ export const HowItWorksSection = (): JSX.Element => {
         aria-hidden="true"
       />
 
-      <div className="relative flex flex-col items-center gap-10 sm:gap-14 max-w-[1440px] mx-auto">
+      <div className="relative flex flex-col items-center gap-10 sm:gap-14 w-full">
         <div
           ref={headerRef}
           className={`flex flex-col items-center gap-3 sm:gap-4 px-4 transition-all duration-700 ${
@@ -130,7 +130,7 @@ export const HowItWorksSection = (): JSX.Element => {
             slidesPerView={1}
             centeredSlides
             loop
-            spaceBetween={0}
+            spaceBetween={-5}
             speed={500}
             autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
             pagination={{ clickable: true, el: ".features-pagination" }}
