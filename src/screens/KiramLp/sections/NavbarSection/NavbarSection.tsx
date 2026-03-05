@@ -4,10 +4,11 @@ import { MenuIcon, XIcon } from "lucide-react";
 import kiramDark from "../../../../img/kiram-dark.svg";
 
 const navItems = [
+  { label: "Getiri Hesapla", href: "#hesaplayici" },
   { label: "Kimin İçin?", href: "#kimin-icin" },
   { label: "Nasıl Çalışır?", href: "#nasil-calisir" },
   { label: "Özellikler", href: "#ozellikler" },
-  { label: "SSS", href: "#sss" },
+  { label: "Sıkça Sorulan Sorular", href: "#sss" },
 ];
 
 export const NavbarSection = (): JSX.Element => {

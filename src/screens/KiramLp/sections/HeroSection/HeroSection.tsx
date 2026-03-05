@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-import { Alert, AlertDescription } from "../../../../components/ui/alert";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { Label } from "../../../../components/ui/label";
 import { Slider } from "../../../../components/ui/slider";
 import { useInView } from "../../../../hooks/useScrollAnimation";
+import { ShieldCheck, Landmark, Building2, Coins } from "lucide-react";
 import patternBg from "../../../../img/pattern.png";
 import phonesImg from "../../../../img/Ultramarine.png";
 
@@ -154,24 +154,24 @@ export const HeroSection = (): JSX.Element => {
                 heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              <p className="[font-family:'Outfit',Helvetica] font-normal italic text-[#36466d] text-lg sm:text-xl mb-5">
-                Kira ilişkisini güvenle yönetin.
-              </p>
               <h1 className="[font-family:'Outfit',Helvetica] font-bold text-[#0056c7] text-[32px] sm:text-[42px] lg:text-[48px] xl:text-[56px] tracking-[-0.02em] leading-[1.1] mb-6">
-                Kira, Depozito,
+                Kiralamanın
                 <br />
-                Sigorta ve Yatırım
+                Finansal
                 <br />
-                Tek Uygulamada
+                Platformu
               </h1>
-              <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-[15px] sm:text-base lg:text-[17px] leading-[1.65] mb-8 max-w-[480px] mx-auto lg:mx-0">
-                Kiram, ev sahibi ve kiracı arasında güvenli dijital sözleşme,
-                akıllı kira tahsilatı, kredi skoru analizi ve yatırım
-                entegrasyonu sağlayan yeni nesil rent-tech platformudur.
+              <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-[15px] sm:text-base lg:text-[17px] leading-[1.65] mb-4 max-w-[520px] mx-auto lg:mx-0">
+                Kiram, kira sözleşmesi, depozito yönetimi, kira tahsilatı ve yatırım
+                entegrasyonunu tek platformda birleştiren yeni nesil rent-tech altyapısıdır.
+              </p>
+              <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-[15px] sm:text-base lg:text-[17px] leading-[1.65] mb-8 max-w-[520px] mx-auto lg:mx-0">
+                Ev sahipleri ve kiracılar için kiralama süreçlerini güvenli, şeffaf ve
+                finansal olarak verimli hale getirir.
               </p>
               <div>
                 <Button className="h-[52px] sm:h-14 px-7 sm:px-8 bg-[#ff8d0a] hover:bg-[#e67e09] rounded-xl [font-family:'Outfit',Helvetica] font-semibold text-white text-base sm:text-lg tracking-[0.01em] transition-transform duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-orange-200/50">
-                  Sözleşmeni Şimdi Oluştur
+                  Sözleşmeni Oluştur
                 </Button>
               </div>
             </div>
@@ -191,11 +191,36 @@ export const HeroSection = (): JSX.Element => {
             </div>
           </div>
         </div>
+
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 pb-12 sm:pb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              { icon: <ShieldCheck className="w-6 h-6 text-[#0056c7]" />, title: "SPK Mevzuatına Uygun", desc: "Tüm yatırım süreçleri SPK düzenlemelerine uygun olarak yürütülür." },
+              { icon: <Landmark className="w-6 h-6 text-[#0056c7]" />, title: "Lisanslı Kurumlar", desc: "Lisanslı kurumlar aracılığıyla güvenli ve şeffaf bir altyapı sunar." },
+              { icon: <Building2 className="w-6 h-6 text-[#0056c7]" />, title: "Banka Güvencesi", desc: "Banka düzeyinde güvenlik protokolleriyle korunan altyapı." },
+              { icon: <Coins className="w-6 h-6 text-[#0056c7]" />, title: "Düşük Riskli Fonlar", desc: "Düşük riskli fon seçenekleriyle güvenli yatırım fırsatı sunar." },
+            ].map((item, i) => (
+              <Card key={i} className="bg-white/80 backdrop-blur-sm border-0 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <CardContent className="flex flex-col gap-3 p-5 sm:p-6">
+                  <div className="w-11 h-11 rounded-xl bg-[#e8f2ff] flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <h3 className="[font-family:'Outfit',Helvetica] font-semibold text-[#0b1f45] text-sm sm:text-base leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="[font-family:'Outfit',Helvetica] font-normal text-[#515966] text-xs sm:text-sm leading-[1.5]">
+                    {item.desc}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section
         id="hesaplayici"
-        className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative w-full flex items-center justify-center overflow-hidden"
         style={{
           background: "linear-gradient(135deg, #e8f2ff 0%, #f0f6ff 50%, #ffffff 100%)",
         }}
@@ -211,10 +236,11 @@ export const HeroSection = (): JSX.Element => {
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 py-16 sm:py-20">
           <div className="flex flex-col items-center gap-4 sm:gap-6 mb-8 sm:mb-12">
             <h2 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-3xl sm:text-4xl lg:text-5xl text-center leading-[1.25]">
-              Getirinizi Hesaplayın
+              Depozito Getiri Hesaplama
             </h2>
             <p className="[font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-base lg:text-lg text-center leading-[1.5] max-w-3xl">
-              Klasik yöntemde bekleyen paranız, Kiram'da <span className="font-bold">faizsiz</span> yatırım fonlarıyla değerlendirilebilir
+              Klasik kira sisteminde depozitolar kira süresi boyunca değer üretmez. Kiram ile depozitonuz güvenli yatırım
+              araçlarında değerlendirilebilir. Depozitonuzu korurken aynı zamanda getiri elde edebilirsiniz.
             </p>
           </div>
 
@@ -301,15 +327,6 @@ export const HeroSection = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <Alert className="bg-[#fffced] border-[#fdba744c] rounded-[14px]">
-                    <AlertDescription className="[font-family:'Inter',Helvetica] text-xs sm:text-sm leading-[22.8px]">
-                      <span className="font-bold text-[#121416]">Not:</span>
-                      <span className="text-[#4a5568]">
-                        {" "}Getiri oranları örnek amaçlıdır. Gerçek getiriler piyasa
-                        koşullarına ve seçilen yatırım ürününe göre değişir.
-                      </span>
-                    </AlertDescription>
-                  </Alert>
                 </div>
 
                 <div className="flex flex-col gap-4 sm:gap-6 p-6 sm:p-8 lg:p-10 bg-[#0056c7] relative">
@@ -363,15 +380,14 @@ export const HeroSection = (): JSX.Element => {
                     </Card>
                   </div>
 
-                  <p className="[font-family:'Outfit',Helvetica] font-normal text-[#d2e4fc] text-xs sm:text-sm leading-[22.8px]">
-                    Depozitonuz kira süresi boyunca atıl kalmak yerine, güvenli
-                    yatırım araçlarıyla değerlendirilebilir. Kira bitiminde hem
-                    depozitonuzu hem de kazancınızı alırsınız.
-                  </p>
                 </div>
               </div>
             </CardContent>
           </Card>
+
+          <p className="[font-family:'Outfit',Helvetica] font-normal text-[#6b7280] text-xs sm:text-sm text-center leading-[1.6] mt-6 max-w-3xl mx-auto">
+            Getiri oranları örnek amaçlıdır. Gerçek getiriler piyasa koşullarına ve seçilen yatırım ürününe göre değişir.
+          </p>
         </div>
       </section>
     </>

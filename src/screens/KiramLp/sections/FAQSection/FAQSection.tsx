@@ -9,27 +9,33 @@ import { useInView } from "../../../../hooks/useScrollAnimation";
 const faqData = [
   {
     id: "item-1",
-    question: "Depozito kimin hesabında duruyor?",
+    question: "Kiram güvenli mi?",
     answer:
-      "Depozito, Kiram'ın tarafsız emanet sisteminde tutulur. Ne kiracının ne de ev sahibinin kişisel hesabında bulunmaz. Bu sayede her iki taraf için de tam güvenlik sağlanır ve süreç sonunda sözleşmeye göre otomatik olarak işlenir.",
+      "Evet. Kiram, kullanıcı verilerini ve işlemleri korumak için yüksek güvenlik standartları ile çalışır. Tüm veriler KVKK uyumlu şekilde saklanır ve işlenir kuruluşlarla çalışılmaktadır. Bu sayede depozitonuz güvenli, şeffaf ve denetlenebilir bir şekilde yönetilir. Tüm sözleşmeler, belgeleri ve işlemler sistemde kayıt altına alınır ve anlaşma ürüne kolay erişim sağlanır.",
   },
   {
     id: "item-2",
-    question: "Ev sahibi parayı erken çekebilir mi?",
+    question: "Depozito nerede tutulur?",
     answer:
-      "Hayır, ev sahibi depozitoyu tek taraflı olarak çekemez. Depozito, sözleşme şartlarına bağlı olarak tarafsız sistem tarafından yönetilir.",
+      "Depozitolar, Kiram'ın tarafsız emanet sisteminde tutulur. Ne kiracının ne de ev sahibinin kişisel hesabında bulunmaz. Lisanslı kuruluşlar aracılığıyla güvenli bir şekilde saklanır.",
   },
   {
     id: "item-3",
-    question: "Kira bitince iade nasıl olur?",
+    question: "Kiram üzerinden yapılan sözleşmeler yasal mı?",
     answer:
-      "Kira süresi sona erdiğinde, depozito otomatik olarak değerlendirilmiş haliyle kiracı hesabına iade edilir. Hasar tespiti durumunda iki tarafın da onayıyla kesinti yapılabilir.",
+      "Evet. Kiram üzerinden oluşturulan dijital kira sözleşmeleri, Türk hukuku çerçevesinde geçerlidir ve yasal bağlayıcılığa sahiptir.",
   },
   {
     id: "item-4",
-    question: "Birden fazla sözleşme yönetebilir miyim?",
+    question: "Ev sahibi veya kiracı ödeme konusunda sorun çıkarırsa ne olur?",
     answer:
-      "Evet, Kiram üzerinden birden fazla mülk ve sözleşmeyi tek panelden yönetebilirsiniz. Her sözleşme için ayrı takip ve raporlama yapılır.",
+      "Kiram sistemi, sözleşmeye bağlı otomatik ödeme takibi yapar. Gecikme veya ödenmeme durumunda her iki tarafa bildirim gönderilir ve süreç kayıt altında tutulur.",
+  },
+  {
+    id: "item-5",
+    question: "Kiram'ı kullanmak zor mu?",
+    answer:
+      "Hayır. Kiram, kullanıcı dostu arayüzüyle dakikalar içinde kayıt olup sözleşme oluşturmanıza olanak tanır. Teknik bilgi gerektirmez.",
   },
 ];
 

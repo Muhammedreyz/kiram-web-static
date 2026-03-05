@@ -4,46 +4,44 @@ import nasilCalisir1 from "../../../../img/nasil-calisir-1.png";
 const steps = [
   {
     number: 1,
-    title: "Hesabını oluştur, rolunu seç",
-    description:
-      "Ev sahibi / Kiracı / Emlak ofisi olarak kaydol. Profil bilgilerini tamamla ve süreci başlat.",
-    highlight: "2 dakikada hazır.",
+    title: "Hesabını oluştur",
+    description: "Ev sahibi veya kiracı olarak kaydol.",
     image: nasilCalisir1,
   },
   {
     number: 2,
-    title: "Kimliğini doğrula ve güvenli eşleştirme yap",
-    description: "Kiminle sözleşme yaptığını bil.",
+    title: "Kimliğini doğrula",
+    description: "Tarafların güvenli şekilde eşleşmesi sağlanır.",
     image: nasilCalisir1,
   },
   {
     number: 3,
-    title: "Dijital kira sözleşmesini oluştur",
-    description: "Sözleşme tek yerde, her an erişilebilir.",
+    title: "Dijital sözleşme oluştur",
+    description: "Kira sözleşmesi sistem üzerinden hazırlanır.",
     image: nasilCalisir1,
   },
   {
     number: 4,
-    title: "Depozitonu güvenceye al",
-    description: "Depozitoda şeffaflık ve güven.",
+    title: "Depozito güvenceye alınır",
+    description: "Depozito sistemde güvenli şekilde saklanır.",
     image: nasilCalisir1,
   },
   {
     number: 5,
-    title: "Kira ödemelerini otomatikleştir",
-    description: "Takip yok, stres yok.",
+    title: "Kira ödemeleri otomatikleşir",
+    description: "Tahsilat ve ödeme takibi sistem üzerinden yapılır.",
     image: nasilCalisir1,
   },
   {
     number: 6,
-    title: "Kira akışını yatırıma bağla (opsiyonel)",
-    description: "Kira gideri değil, finansal akış.",
+    title: "Kira akışı yatırım araçlarına bağlanabilir",
+    description: "İsteğe bağlı olarak finansal ürünlerle entegre edilir.",
     image: nasilCalisir1,
   },
   {
     number: 7,
-    title: "Tüm süreci raporla ve kayıt altında tut",
-    description: "Kiralama süreçleri tek panelde.",
+    title: "Tüm süreç kayıt altındadır",
+    description: "Sözleşme, ödeme ve bildirim geçmişi tek panelde tutulur.",
     image: nasilCalisir1,
   },
 ];
@@ -94,7 +92,7 @@ export const UserTypeInfoSection = (): JSX.Element => {
       </div>
 
       <div className="flex flex-col lg:flex-row items-center lg:items-stretch max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-16 gap-6 lg:gap-16 pb-12 sm:pb-16">
-        <div className="flex-shrink-0 flex items-center justify-center lg:w-[420px] xl:w-[460px]">
+        <div className="flex-shrink-0 flex items-center justify-center lg:w-[480px] xl:w-[540px]">
           <div className="relative w-[220px] sm:w-[280px] lg:w-full bg-[#F3F3F3] rounded-[40px] sm:rounded-[48px] lg:rounded-[64px] p-3 sm:p-4 lg:p-6 flex items-center justify-center overflow-hidden">
             {steps.map((step, index) => {
               const isActive = index === activeStep;

@@ -6,6 +6,7 @@ import { FooterSection } from "./sections/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { HowItWorksSection } from "./sections/HowItWorksSection";
 import { NavbarSection } from "./sections/NavbarSection";
+import { ProblemSolutionSection } from "./sections/ProblemSolutionSection";
 import { UserTypeInfoSection } from "./sections/UserTypeInfoSection";
 
 export const KiramLp = (): JSX.Element => {
@@ -14,6 +15,7 @@ export const KiramLp = (): JSX.Element => {
       <NavbarSection />
       <main>
         <HeroSection />
+        <ProblemSolutionSection />
         <CalculatorSection />
         <UserTypeInfoSection />
         <HowItWorksSection />

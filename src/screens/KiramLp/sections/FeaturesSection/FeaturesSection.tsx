@@ -9,17 +9,15 @@ const features = [
   {
     column: 1,
     items: [
-      { text: "Güvenli İşlemler" },
       { text: "Anında Bildirim" },
-      { text: "Dijital Belgeler" },
+      { text: "Güvenli İşlemler" },
     ],
   },
   {
     column: 2,
     items: [
+      { text: "Dijital Belgeler" },
       { text: "7/24 Erişim" },
-      { text: "Akıllı Hatırlatıcılar" },
-      { text: "Kolay Kullanım" },
     ],
   },
 ];
@@ -55,8 +53,8 @@ export const FeaturesSection = (): JSX.Element => {
                 </h2>
 
                 <p className="w-full max-w-[472px] [font-family:'Outfit',Helvetica] font-normal text-[#36466d] text-sm sm:text-lg tracking-[0] leading-[26px] text-center lg:text-left">
-                  Kira sürecinizi her yerden yönetin. Depozito, ödeme ve
-                  sözleşmeleriniz her zaman elinizin altında.
+                  Kira sözleşmelerinizi, depozitolarınızı ve kira ödemelerinizi
+                  her yerden yönetin.
                 </p>
               </div>
 
