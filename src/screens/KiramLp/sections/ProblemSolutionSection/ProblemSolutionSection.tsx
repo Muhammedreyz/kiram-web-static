@@ -1,4 +1,4 @@
-import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { CircleAlert as AlertCircle, CircleCheck as CheckCircle2 } from "lucide-react";
 import { useInView } from "../../../../hooks/useScrollAnimation";
 
 const problems = [

@@ -1,4 +1,4 @@
-import { CheckIcon } from "lucide-react";
+import { Check as CheckIcon } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 import { useInView } from "../../../../hooks/useScrollAnimation";
 import patternBg from "../../../../img/Frame_4205927.png";
