@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "../../../../components/ui/button";
-import { Menu as MenuIcon, Bone as XIcon } from "lucide-react";
+import { Menu as MenuIcon, X as XIcon } from "lucide-react";
 import kiramDark from "../../../../img/kiram-dark.svg";
 
 const navItems = [
