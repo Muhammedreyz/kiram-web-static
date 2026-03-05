@@ -80,6 +80,7 @@ const features = [
 
 export const HowItWorksSection = (): JSX.Element => {
   const { ref: headerRef, isInView: headerVisible } = useInView(0.3);
+  const { ref: gridRef, isInView: gridVisible } = useInView(0.1);
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -107,37 +108,91 @@ export const HowItWorksSection = (): JSX.Element => {
           </p>
         </div>
 
-        <div className="relative w-full features-swiper-wrapper">
+        <div ref={gridRef} className="flex flex-col gap-3 px-4 w-full max-w-[600px] mx-auto sm:hidden">
+          {features.map((feature, index) => (
+            <Card
+              key={index}
+              className={`rounded-2xl border-0 bg-white shadow-sm transition-all duration-500 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: gridVisible ? `${index * 80}ms` : "0ms" }}
+            >
+              <CardContent className="flex items-start gap-4 p-4">
+                <div
+                  className="flex-shrink-0 flex items-center justify-center rounded-[14px] w-[56px] h-[56px]"
+                  style={iconBgStyles[feature.iconBgKey]}
+                >
+                  <img className="w-7 h-7" alt={feature.title} src={feature.icon} />
+                </div>
+                <div className="flex flex-col gap-1 min-w-0">
+                  <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-base leading-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-sm leading-[20px]">
+                    {feature.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="hidden sm:grid lg:hidden grid-cols-2 gap-4 px-6 w-full max-w-[800px] mx-auto">
+          {features.map((feature, index) => (
+            <Card
+              key={index}
+              className={`rounded-2xl border-0 bg-white shadow-sm transition-all duration-500 ${
+                gridVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: gridVisible ? `${index * 80}ms` : "0ms" }}
+            >
+              <CardContent className="flex flex-col items-center text-center gap-4 p-5">
+                <div
+                  className="flex items-center justify-center rounded-[16px] w-[72px] h-[72px]"
+                  style={iconBgStyles[feature.iconBgKey]}
+                >
+                  <img className="w-9 h-9" alt={feature.title} src={feature.icon} />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-lg leading-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="[font-family:'Outfit',Helvetica] font-medium text-[#36466d] text-xs leading-[18px]">
+                    {feature.description}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="hidden lg:block relative w-full features-swiper-wrapper">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="absolute left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
             aria-label="Önceki"
           >
-            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#0b1f45]" />
+            <ChevronLeft className="w-6 h-6 text-[#0b1f45]" />
           </button>
 
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+            className="absolute right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
             aria-label="Sonraki"
           >
-            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#0b1f45]" />
+            <ChevronRight className="w-6 h-6 text-[#0b1f45]" />
           </button>
 
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             onSwiper={(swiper) => { swiperRef.current = swiper; }}
-            slidesPerView={1}
+            slidesPerView={2.6}
             centeredSlides
             loop
             spaceBetween={0}
             speed={500}
             autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
             pagination={{ clickable: true, el: ".features-pagination" }}
-            breakpoints={{
-              640: { slidesPerView: 1.8 },
-              1024: { slidesPerView: 2.6 },
-            }}
             className="features-swiper"
           >
             {features.map((feature, index) => (
@@ -151,7 +206,7 @@ export const HowItWorksSection = (): JSX.Element => {
                           : "bg-white/80 shadow-sm scale-100 opacity-50"
                       }`}
                     >
-                      <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-6 sm:p-10" : "p-5 sm:p-6"}`}>
+                      <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-10" : "p-6"}`}>
                         <div
                           className="flex items-center justify-center rounded-[18px] w-[96px] h-[96px] transition-all duration-500"
                           style={iconBgStyles[feature.iconBgKey]}
@@ -162,17 +217,17 @@ export const HowItWorksSection = (): JSX.Element => {
                             src={feature.icon}
                           />
                         </div>
-                        <div className="flex flex-col gap-2 sm:gap-3">
+                        <div className="flex flex-col gap-3">
                           <h3
                             className={`[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] tracking-[0] leading-7 transition-all duration-500 ${
-                              isActive ? "text-xl sm:text-2xl" : "text-lg"
+                              isActive ? "text-2xl" : "text-lg"
                             }`}
                           >
                             {feature.title}
                           </h3>
                           <p
                             className={`[font-family:'Outfit',Helvetica] font-medium text-[#36466d] tracking-[-0.31px] leading-[24px] transition-all duration-500 ${
-                              isActive ? "text-sm sm:text-base" : "text-xs sm:text-sm"
+                              isActive ? "text-base" : "text-sm"
                             }`}
                           >
                             {feature.description}
@@ -185,9 +240,9 @@ export const HowItWorksSection = (): JSX.Element => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
 
-        <div className="features-pagination flex items-center justify-center gap-2" />
+          <div className="features-pagination flex items-center justify-center gap-2 mt-2" />
+        </div>
       </div>
 
       <style>{`
