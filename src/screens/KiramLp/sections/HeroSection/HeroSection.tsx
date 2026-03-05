@@ -4,9 +4,12 @@ import { Card, CardContent } from "../../../../components/ui/card";
 import { Label } from "../../../../components/ui/label";
 import { Slider } from "../../../../components/ui/slider";
 import { useInView } from "../../../../hooks/useScrollAnimation";
-import { ShieldCheck, Landmark, Building2, Coins } from "lucide-react";
 import patternBg from "../../../../img/pattern.png";
 import phonesImg from "../../../../img/Ultramarine.png";
+import spkIcon from "../../../../img/spk-mevzuatina-uygun.svg";
+import lisansliIcon from "../../../../img/lisansli-kurumlar.svg";
+import bankaIcon from "../../../../img/banka-guvencesi.svg";
+import fonlarIcon from "../../../../img/dusuk-riskli-fonlar.svg";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -195,16 +198,14 @@ export const HeroSection = (): JSX.Element => {
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16 pb-12 sm:pb-16">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
-              { icon: <ShieldCheck className="w-6 h-6 text-[#0056c7]" />, title: "SPK Mevzuatına Uygun", desc: "Tüm yatırım süreçleri SPK düzenlemelerine uygun olarak yürütülür." },
-              { icon: <Landmark className="w-6 h-6 text-[#0056c7]" />, title: "Lisanslı Kurumlar", desc: "Lisanslı kurumlar aracılığıyla güvenli ve şeffaf bir altyapı sunar." },
-              { icon: <Building2 className="w-6 h-6 text-[#0056c7]" />, title: "Banka Güvencesi", desc: "Banka düzeyinde güvenlik protokolleriyle korunan altyapı." },
-              { icon: <Coins className="w-6 h-6 text-[#0056c7]" />, title: "Düşük Riskli Fonlar", desc: "Düşük riskli fon seçenekleriyle güvenli yatırım fırsatı sunar." },
+              { icon: spkIcon, title: "SPK Mevzuatına Uygun", desc: "Tüm yatırım süreçleri Sermaye Piyasası Kurulu düzenlemelerine uygun şekilde yürütülür." },
+              { icon: lisansliIcon, title: "Lisanslı Kurumlar", desc: "Depozito ve kira fonları lisanslı portföy yönetim şirketleri tarafından yönetilir." },
+              { icon: bankaIcon, title: "Banka Güvencesi", desc: "Paranız Kiram hesabında durmaz. Adınıza açılan saklama hesabında tutulur." },
+              { icon: fonlarIcon, title: "Düşük Riskli Fonlar", desc: "Depozito ve kira fonları düşük riskli ve katılım esasına uygun fonlarda değerlendirilir." },
             ].map((item, i) => (
               <Card key={i} className="bg-white/80 backdrop-blur-sm border-0 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
-                <CardContent className="flex flex-col gap-3 p-5 sm:p-6">
-                  <div className="w-11 h-11 rounded-xl bg-[#e8f2ff] flex items-center justify-center">
-                    {item.icon}
-                  </div>
+                <CardContent className="flex flex-col items-center text-center gap-4 p-5 sm:p-6">
+                  <img src={item.icon} alt="" className="w-11 h-11" aria-hidden="true" />
                   <h3 className="[font-family:'Outfit',Helvetica] font-semibold text-[#0b1f45] text-sm sm:text-base leading-tight">
                     {item.title}
                   </h3>
