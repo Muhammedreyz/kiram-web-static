@@ -154,18 +154,18 @@ export const HowItWorksSection = (): JSX.Element => {
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#0b1f45]" />
           </button>
 
-          <div className="flex items-center justify-center min-h-[280px] sm:min-h-[320px] px-14 sm:px-20 lg:px-28">
+          <div className="flex items-center justify-center min-h-[320px] sm:min-h-[380px] px-4 sm:px-8 lg:px-16">
             {features.map((feature, index) => {
               const offset = index - activeIndex;
               const absOffset = Math.abs(offset);
 
-              if (absOffset > 2) return null;
+              if (absOffset > 1) return null;
 
               const isActive = offset === 0;
-              const translateX = offset * 110;
-              const scale = isActive ? 1 : 0.85;
-              const opacity = isActive ? 1 : absOffset === 1 ? 0.65 : 0.3;
-              const zIndex = 10 - absOffset;
+              const translateX = offset * 100;
+              const scale = isActive ? 1 : 0.88;
+              const opacity = isActive ? 1 : 0.5;
+              const zIndex = isActive ? 10 : 5;
 
               return (
                 <div
@@ -187,22 +187,18 @@ export const HowItWorksSection = (): JSX.Element => {
                         : "bg-white/80 shadow-sm"
                     }`}
                     style={{
-                      width: isActive ? "340px" : "300px",
+                      width: isActive ? "360px" : "320px",
                     }}
                   >
-                    <CardContent className={`flex flex-col gap-5 sm:gap-8 ${isActive ? "p-6 sm:p-8" : "p-5 sm:p-6"}`}>
-                      <div className="flex items-start">
-                        <div
-                          className={`flex items-center justify-center rounded-[14px] ${feature.iconBg} ${
-                            isActive ? "w-14 h-14" : "w-11 h-11"
-                          } transition-all duration-500`}
-                        >
-                          <img
-                            className={`${isActive ? "w-7 h-7" : "w-5 h-5"} transition-all duration-500`}
-                            alt={feature.title}
-                            src={feature.icon}
-                          />
-                        </div>
+                    <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-6 sm:p-8" : "p-5 sm:p-6"}`}>
+                      <div
+                        className={`flex items-center justify-center rounded-[18px] ${feature.iconBg} w-[96px] h-[96px] transition-all duration-500`}
+                      >
+                        <img
+                          className="w-12 h-12 transition-all duration-500"
+                          alt={feature.title}
+                          src={feature.icon}
+                        />
                       </div>
                       <div className="flex flex-col gap-2 sm:gap-3">
                         <h3
