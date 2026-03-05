@@ -72,20 +72,35 @@ export const FeaturesSection = (): JSX.Element => {
       }`}
     >
       <style>{`
+        .features-swiper {
+          padding: 20px 0;
+        }
+        .features-swiper .swiper-wrapper {
+          align-items: center;
+        }
         .features-swiper .swiper-slide {
-          background: #b0b0b8;
+          background: #bbbbc4;
           border-radius: 1rem;
-          transition: all 0.5s ease;
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
           overflow: hidden;
+          width: 260px !important;
+          opacity: 0.8;
         }
         .features-swiper .swiper-slide-active {
           background: #ffffff;
-          box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+          box-shadow: 0 30px 80px rgba(0,0,0,0.4);
           border-radius: 1.25rem;
+          width: 420px !important;
+          opacity: 1;
+          z-index: 10;
+        }
+        .features-swiper .swiper-slide-prev,
+        .features-swiper .swiper-slide-next {
+          opacity: 0.85;
         }
         .features-swiper .swiper-pagination {
           position: relative;
-          margin-top: 2.5rem;
+          margin-top: 2rem;
           display: flex;
           justify-content: center;
           gap: 0.5rem;
@@ -104,6 +119,14 @@ export const FeaturesSection = (): JSX.Element => {
           background: #0056c7;
           border-radius: 9999px;
         }
+        @media (max-width: 640px) {
+          .features-swiper .swiper-slide {
+            width: 200px !important;
+          }
+          .features-swiper .swiper-slide-active {
+            width: 280px !important;
+          }
+        }
       `}</style>
 
       <Swiper
@@ -112,38 +135,42 @@ export const FeaturesSection = (): JSX.Element => {
         grabCursor
         centeredSlides
         loop
-        slidesPerView="auto"
+        slidesPerView={3}
         coverflowEffect={{
           rotate: 0,
-          stretch: 0,
-          depth: 120,
+          stretch: 80,
+          depth: 200,
           modifier: 1,
           slideShadows: false,
         }}
         pagination={{ clickable: true }}
         initialSlide={1}
         onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.realIndex)}
-        className="features-swiper !overflow-visible"
+        breakpoints={{
+          0: { slidesPerView: 1.4 },
+          480: { slidesPerView: 1.8 },
+          768: { slidesPerView: 3 },
+        }}
+        className="features-swiper"
       >
         {features.map((feature, i) => {
           const isActive = i === activeIndex;
           return (
-            <SwiperSlide
-              key={i}
-              style={{ width: isActive ? "420px" : "280px", maxWidth: "90vw" }}
-            >
+            <SwiperSlide key={i}>
               <div
                 className={`flex flex-col items-center text-center transition-all duration-500 ${
-                  isActive ? "px-8 py-10 sm:px-12 sm:py-14" : "px-5 py-6 sm:px-6 sm:py-8"
+                  isActive
+                    ? "px-8 py-10 sm:px-10 sm:py-12"
+                    : "px-4 py-5 sm:px-5 sm:py-6"
                 }`}
               >
                 <div
-                  className="flex items-center justify-center rounded-2xl mb-5"
+                  className="flex items-center justify-center rounded-2xl mb-4"
                   style={{
-                    width: isActive ? 96 : 56,
-                    height: isActive ? 96 : 56,
+                    width: isActive ? 96 : 48,
+                    height: isActive ? 96 : 48,
                     backgroundColor: feature.iconBg,
-                    transition: "all 0.5s ease",
+                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                 >
                   <img
@@ -151,22 +178,26 @@ export const FeaturesSection = (): JSX.Element => {
                     alt=""
                     aria-hidden="true"
                     style={{
-                      width: isActive ? 48 : 28,
-                      height: isActive ? 48 : 28,
-                      transition: "all 0.5s ease",
+                      width: isActive ? 48 : 24,
+                      height: isActive ? 48 : 24,
+                      transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   />
                 </div>
                 <h3
                   className={`[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] leading-tight transition-all duration-500 ${
-                    isActive ? "text-xl sm:text-2xl mb-3" : "text-sm sm:text-base mb-2"
+                    isActive
+                      ? "text-xl sm:text-2xl mb-3"
+                      : "text-sm sm:text-base mb-2"
                   }`}
                 >
                   {feature.title}
                 </h3>
                 <p
                   className={`[font-family:'Outfit',Helvetica] font-normal text-[#515966] leading-[1.6] transition-all duration-500 ${
-                    isActive ? "text-sm sm:text-base" : "text-xs sm:text-sm"
+                    isActive
+                      ? "text-sm sm:text-base"
+                      : "text-xs sm:text-sm"
                   }`}
                 >
                   {feature.desc}
