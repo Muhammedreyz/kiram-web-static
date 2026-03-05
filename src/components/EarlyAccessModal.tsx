@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X } from "lucide-react";
-import { supabase } from "../lib/supabase";
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 interface EarlyAccessModalProps {
   isOpen: boolean;
@@ -84,25 +86,36 @@ export const EarlyAccessModal = ({
 
     setLoading(true);
 
-    const { error: dbError } = await supabase
-      .from("early_access_submissions")
-      .insert({
-        full_name: fullName.trim(),
-        phone: phone.replace(/\s/g, ""),
-        email: email.trim(),
-        message: message.trim(),
-        consent_privacy: consentPrivacy,
-        consent_data_processing: consentData,
-      });
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/functions/v1/send-early-access`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: fullName.trim(),
+            phone: phone.replace(/\s/g, ""),
+            email: email.trim(),
+            message: message.trim(),
+          }),
+        }
+      );
 
-    setLoading(false);
+      if (!res.ok) {
+        setError("Bir hata oluştu. Lütfen tekrar deneyin.");
+        setLoading(false);
+        return;
+      }
 
-    if (dbError) {
+      setSuccess(true);
+    } catch {
       setError("Bir hata oluştu. Lütfen tekrar deneyin.");
-      return;
     }
 
-    setSuccess(true);
+    setLoading(false);
   };
 
   if (!isOpen) return null;
