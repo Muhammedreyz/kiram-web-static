@@ -154,7 +154,7 @@ export const HowItWorksSection = (): JSX.Element => {
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#0b1f45]" />
           </button>
 
-          <div className="flex items-center justify-center min-h-[320px] sm:min-h-[380px] px-4 sm:px-8 lg:px-16">
+          <div className="flex items-center justify-center min-h-[380px] sm:min-h-[440px] px-4 sm:px-8 lg:px-16">
             {features.map((feature, index) => {
               const offset = index - activeIndex;
               const absOffset = Math.abs(offset);
@@ -178,17 +178,15 @@ export const HowItWorksSection = (): JSX.Element => {
                     transform: `translateX(${translateX}%) scale(${scale})`,
                     opacity,
                     zIndex,
+                    width: isActive ? "min(440px, 90vw)" : "min(400px, 80vw)",
                   }}
                 >
                   <Card
-                    className={`rounded-2xl border-0 transition-all duration-500 ${
+                    className={`rounded-2xl border-0 transition-all duration-500 w-full ${
                       isActive
                         ? "bg-white shadow-2xl"
                         : "bg-white/80 shadow-sm"
                     }`}
-                    style={{
-                      width: isActive ? "360px" : "320px",
-                    }}
                   >
                     <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-6 sm:p-8" : "p-5 sm:p-6"}`}>
                       <div
