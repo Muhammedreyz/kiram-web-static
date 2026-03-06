@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
 import patternBg from "../../../../img/Frame_4205927.png";
 import tcmbLogo from "../../../../img/tcmb_1.png";
@@ -9,64 +9,95 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const SpkLogo = () => (
+  <svg viewBox="0 0 42 42" className="w-[40px] h-[40px]" fill="none">
+    <circle cx="21" cy="21" r="20" stroke="#98acc3" strokeWidth="1.5" />
+    <text x="21" y="16" textAnchor="middle" fill="#98acc3" fontSize="7" fontFamily="serif" fontWeight="bold">SPK</text>
+    <text x="21" y="25" textAnchor="middle" fill="#98acc3" fontSize="5" fontFamily="serif">Sermaye</text>
+    <text x="21" y="31" textAnchor="middle" fill="#98acc3" fontSize="5" fontFamily="serif">Piyasası</text>
+    <text x="21" y="37" textAnchor="middle" fill="#98acc3" fontSize="5" fontFamily="serif">Kurulu</text>
+  </svg>
+);
+
+const MkkLogo = () => (
+  <div className="flex flex-col items-start">
+    <span className="[font-family:'Outfit',Helvetica] font-bold text-white text-[11px] leading-tight tracking-wide">MERKEZi KAYIT</span>
+    <span className="[font-family:'Outfit',Helvetica] font-bold text-white text-[13px] leading-tight tracking-wide">iSTANBUL</span>
+    <span className="[font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[5px] leading-tight">Türkiye Sermaye Piyasaları - Merkezi</span>
+    <span className="[font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[5px] leading-tight">Saklama ve Veri Depolama Kuruluşu</span>
+  </div>
+);
+
 export const FooterSection = (): JSX.Element => {
   return (
-    <footer className="relative flex flex-col items-center gap-8 sm:gap-12 pt-8 sm:pt-10 pb-6 px-4 sm:px-8 lg:px-16 w-full bg-[#00357a] overflow-hidden">
+    <footer className="relative flex flex-col items-center pt-10 pb-6 px-4 sm:px-8 lg:px-16 w-full bg-[#00357a] overflow-hidden">
       <img
         src={patternBg}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
       />
-      <div className="relative z-10 flex flex-col max-w-[542px] items-center gap-6 sm:gap-8 w-full">
-        <div className="flex flex-col items-center gap-6 sm:gap-8 w-full">
-          <img src={kiramWhite} alt="Kiram" className="h-6 sm:h-8" />
 
-          <div className="flex flex-col items-start gap-4 w-full">
-            <p className="w-full text-center [font-family:'Kumbh_Sans',Helvetica] font-medium text-white text-sm sm:text-base tracking-[0] leading-[22px]">
-              Kiram, kiracı ve ev sahibi arasında güvenli bir köprü kurar.
-              Depozitonuzu yasal, şeffaf ve kazançlı bir şekilde yönetmenin en
-              kolay yolu.
-            </p>
-          </div>
+      <div className="relative z-10 flex flex-col lg:flex-row items-start justify-between gap-8 w-full max-w-[1440px] mx-auto pb-10 sm:pb-12">
+        <div className="flex flex-col items-start gap-6 sm:gap-8 max-w-[577px]">
+          <img src={kiramWhite} alt="Kiram" className="h-7 sm:h-8" />
+          <p className="[font-family:'Kumbh_Sans',Helvetica] font-medium text-white text-sm sm:text-base leading-[22px]">
+            Kiram, kiracı ve ev sahibi arasında güvenli bir köprü kurar. Kira ve
+            depozitonuzu yasal, şeffaf ve kazançlı bir şekilde yönetmenin en
+            kolay yolu.
+          </p>
         </div>
 
-        <div className="inline-flex flex-col items-center gap-3">
-          <p className="[font-family:'Kumbh_Sans',Helvetica] font-medium text-[#e5eaee] text-sm sm:text-base tracking-[0] leading-[22px] whitespace-nowrap">
+        <div className="flex flex-col items-start lg:items-end gap-2 flex-shrink-0">
+          <p className="[font-family:'Kumbh_Sans',Helvetica] font-medium text-[#e5eaee] text-sm sm:text-base leading-[22px] whitespace-nowrap">
             Bizi Takip Edin
           </p>
-          <div className="flex items-center gap-4">
-            <a href="#" aria-label="Facebook" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-              <Facebook className="w-5 h-5 text-white" />
+          <div className="flex items-center gap-3">
+            <a href="#" aria-label="Facebook" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+              <Facebook className="w-[18px] h-[18px] text-white" />
             </a>
-            <a href="#" aria-label="X" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+            <a href="#" aria-label="Instagram" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+              <Instagram className="w-[18px] h-[18px] text-white" />
+            </a>
+            <a href="#" aria-label="X" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
               <XIcon className="w-4 h-4 text-white" />
             </a>
-            <a href="#" aria-label="Instagram" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-              <Instagram className="w-5 h-5 text-white" />
+            <a href="#" aria-label="LinkedIn" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+              <Linkedin className="w-[18px] h-[18px] text-white" />
             </a>
-            <a href="#" aria-label="LinkedIn" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-              <Linkedin className="w-5 h-5 text-white" />
+            <a href="#" aria-label="YouTube" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
+              <Youtube className="w-[18px] h-[18px] text-white" />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col w-full border-t border-[#ffffff1f]">
-        <div className="flex flex-col sm:flex-row items-center sm:items-start sm:justify-between gap-4 py-6 w-full max-w-[1200px] mx-auto">
-          <div className="flex items-start gap-3">
-            <img
-              src={tcmbLogo}
-              alt="TCMB - Türkiye Cumhuriyeti Merkez Bankası"
-              className="w-[80px] sm:w-[116px] h-auto object-contain flex-shrink-0"
-            />
-            <p className="max-w-[300px] [font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[10px] sm:text-[11px] tracking-[0] leading-[15px]">
-              Kiram, Türkiye Cumhuriyeti Merkez Bankası tarafından 6493 sayılı
-              Kanun uyarınca lisanslandırılmış bir elektronik para
-              kuruluşudur.
+      <div className="relative z-10 flex flex-col w-full max-w-[1440px] mx-auto border-t border-[#ffffff1f]">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 py-6 w-full">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
+            <div className="flex items-center gap-6">
+              <img
+                src={tcmbLogo}
+                alt="TCMB - Türkiye Cumhuriyeti Merkez Bankası"
+                className="w-[90px] sm:w-[103px] h-auto object-contain flex-shrink-0"
+              />
+              <SpkLogo />
+              <MkkLogo />
+            </div>
+
+            <p className="max-w-[424px] [font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[10px] sm:text-[11px] leading-[15px]">
+              Ödeme ve elektronik para işlemleri TCMB lisanslı kuruluşlar
+              aracılığıyla gerçekleştirilir.
+              <br />
+              Yatırım işlemleri SPK düzenlemesine tabi portföy yönetim
+              şirketleri tarafından yürütülür.
+              <br />
+              Fon varlıklarının saklama ve kayıt işlemleri MKK sistemi
+              kapsamında korunur.
             </p>
           </div>
-          <p className="[font-family:'Plus_Jakarta_Sans',Helvetica] font-normal text-[#ffffff73] text-xs sm:text-sm tracking-[0] leading-7 whitespace-nowrap">
+
+          <p className="[font-family:'Plus_Jakarta_Sans',Helvetica] font-normal text-[#ffffff73] text-xs sm:text-sm leading-7 whitespace-nowrap flex-shrink-0">
             &copy; 2026 Kiram. Tüm hakları saklıdır.
           </p>
         </div>
