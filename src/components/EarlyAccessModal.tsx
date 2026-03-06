@@ -16,7 +16,9 @@ export const EarlyAccessModal = ({
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [city, setCity] = useState("");
+  const [userType, setUserType] = useState<"" | "ev_sahibi" | "kiraci">("");
+  const [rentAmount, setRentAmount] = useState("");
   const [consentPrivacy, setConsentPrivacy] = useState(false);
   const [consentData, setConsentData] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -39,7 +41,9 @@ export const EarlyAccessModal = ({
     setFullName("");
     setPhone("");
     setEmail("");
-    setMessage("");
+    setCity("");
+    setUserType("");
+    setRentAmount("");
     setConsentPrivacy(false);
     setConsentData(false);
     setError("");
@@ -68,7 +72,7 @@ export const EarlyAccessModal = ({
     e.preventDefault();
     setError("");
 
-    if (!fullName.trim() || !phone.trim() || !email.trim()) {
+    if (!fullName.trim() || !phone.trim() || !email.trim() || !city.trim() || !userType || !rentAmount.trim()) {
       setError("Lütfen zorunlu alanları doldurun.");
       return;
     }
@@ -99,7 +103,9 @@ export const EarlyAccessModal = ({
             fullName: fullName.trim(),
             phone: phone.replace(/\s/g, ""),
             email: email.trim(),
-            message: message.trim(),
+            city: city.trim(),
+            userType,
+            rentAmount: rentAmount.replace(/\s/g, ""),
           }),
         }
       );
@@ -223,15 +229,59 @@ export const EarlyAccessModal = ({
 
             <div className="flex flex-col gap-1.5">
               <label className="[font-family:'Outfit',Helvetica] font-semibold text-[#0b1f45] text-sm">
-                Mesajınız
+                Şehir <span className="text-red-500">*</span>
               </label>
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Lütfen buraya mesajınızı belirtin."
-                rows={4}
-                className="px-4 py-3 rounded-xl bg-[#f0f3f7] border border-[#e2e6ec] [font-family:'Outfit',Helvetica] text-[#0b1f45] text-[15px] placeholder:text-[#9ba5b4] outline-none focus:border-[#0056c7] focus:ring-2 focus:ring-[#0056c7]/10 transition-all resize-none"
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                placeholder="örn. İstanbul"
+                className="h-12 px-4 rounded-xl bg-[#f0f3f7] border border-[#e2e6ec] [font-family:'Outfit',Helvetica] text-[#0b1f45] text-[15px] placeholder:text-[#9ba5b4] outline-none focus:border-[#0056c7] focus:ring-2 focus:ring-[#0056c7]/10 transition-all"
               />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label className="[font-family:'Outfit',Helvetica] font-semibold text-[#0b1f45] text-sm">
+                  Kullanıcı Tipi <span className="text-red-500">*</span>
+                </label>
+                <div className="flex gap-3">
+                  {([
+                    { value: "ev_sahibi", label: "Ev Sahibi" },
+                    { value: "kiraci", label: "Kiracı" },
+                  ] as const).map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setUserType(option.value)}
+                      className={`flex-1 h-12 rounded-xl [font-family:'Outfit',Helvetica] font-semibold text-[15px] transition-all duration-200 ${
+                        userType === option.value
+                          ? "bg-[#0056c7] text-white shadow-md shadow-blue-200/50"
+                          : "bg-[#f0f3f7] border border-[#e2e6ec] text-[#36466d] hover:bg-[#e8ecf1]"
+                      }`}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="[font-family:'Outfit',Helvetica] font-semibold text-[#0b1f45] text-sm">
+                  Kira Tutarı (TL) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  value={rentAmount}
+                  onChange={(e) => {
+                    const val = e.target.value.replace(/[^\d]/g, "");
+                    setRentAmount(val);
+                  }}
+                  placeholder="örn. 15000"
+                  className="h-12 px-4 rounded-xl bg-[#f0f3f7] border border-[#e2e6ec] [font-family:'Outfit',Helvetica] text-[#0b1f45] text-[15px] placeholder:text-[#9ba5b4] outline-none focus:border-[#0056c7] focus:ring-2 focus:ring-[#0056c7]/10 transition-all"
+                />
+              </div>
             </div>
 
             <div className="flex flex-col gap-3 mt-1">

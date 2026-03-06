@@ -14,7 +14,9 @@ interface FormData {
   fullName: string;
   phone: string;
   email: string;
-  message: string;
+  city: string;
+  userType: string;
+  rentAmount: string;
 }
 
 Deno.serve(async (req: Request) => {
@@ -23,7 +25,7 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { fullName, phone, email, message }: FormData = await req.json();
+    const { fullName, phone, email, city, userType, rentAmount }: FormData = await req.json();
 
     if (!fullName || !phone || !email) {
       return new Response(
@@ -35,13 +37,17 @@ Deno.serve(async (req: Request) => {
       );
     }
 
+    const userTypeLabel = userType === "ev_sahibi" ? "Ev Sahibi" : userType === "kiraci" ? "Kiracı" : "-";
+
     const htmlBody = `
       <h2>Yeni Erken Erisim Basvurusu</h2>
       <table style="border-collapse:collapse;width:100%;max-width:500px;">
         <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Ad Soyad</td><td style="padding:8px;border-bottom:1px solid #eee;">${fullName}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Telefon</td><td style="padding:8px;border-bottom:1px solid #eee;">${phone}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">E-Posta</td><td style="padding:8px;border-bottom:1px solid #eee;">${email}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Mesaj</td><td style="padding:8px;border-bottom:1px solid #eee;">${message || "-"}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Sehir</td><td style="padding:8px;border-bottom:1px solid #eee;">${city || "-"}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Kullanici Tipi</td><td style="padding:8px;border-bottom:1px solid #eee;">${userTypeLabel}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;border-bottom:1px solid #eee;">Kira Tutari</td><td style="padding:8px;border-bottom:1px solid #eee;">${rentAmount ? rentAmount + " TL" : "-"}</td></tr>
       </table>
     `;
 
