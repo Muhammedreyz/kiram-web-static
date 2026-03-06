@@ -2,7 +2,7 @@ import { Card, CardContent } from "../../../../components/ui/card";
 import { useInView } from "../../../../hooks/useScrollAnimation";
 import appStore from "../../../../img/app-store.svg";
 import googlePlay from "../../../../img/google-play.svg";
-import footerMockup from "../../../../img/footer-mockup.png";
+import footerMockup from "../../../../img/iPhone-13-Pro-Front.png";
 import tickIcon from "../../../../img/tick.svg";
 
 const features = [
