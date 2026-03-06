@@ -7,81 +7,61 @@ import "swiper/css/pagination";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { useInView } from "../../../../hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import ozellik1 from "../../../../img/ozellik-1.svg";
-import fileShield from "../../../../img/file-shield.svg";
-import akilliOdeme from "../../../../img/akilli-odeme.svg";
-import kiraAkisi from "../../../../img/kira-akisi.svg";
-import cokluPortfoy from "../../../../img/coklu-portfoy.svg";
-import guvenliFinansal from "../../../../img/guvenli-finansal-altyapi.svg";
+import containerDijital from "../../../../img/Container.svg";
+import containerRisk from "../../../../img/Container-1.svg";
+import containerDepozito from "../../../../img/Container-3.svg";
+import containerKiraAkisi from "../../../../img/Container-4.svg";
+import containerPortfoy from "../../../../img/Container-5.svg";
+import containerFinansal from "../../../../img/Container-6.svg";
 import logoPattern from "../../../../img/logo-pattern.png";
 
-const iconBgStyles: Record<string, React.CSSProperties> = {
-  blue: { background: "linear-gradient(180deg, #4A90D9 0%, #2E6AB0 100%)" },
-  darkNavy: { background: "linear-gradient(180deg, #1B3A5C 0%, #0F2440 100%)" },
-  hotPink: { background: "linear-gradient(180deg, #E84393 0%, #D63384 100%)" },
-  cyan: { background: "linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%)" },
-  violet: { background: "linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%)" },
-  teal: { background: "linear-gradient(180deg, #2DD4BF 0%, #14B8A6 100%)" },
-};
-
-const BarChartIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.33333 18.6667V12.8333" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M14 18.6667V9.33333" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M18.6667 18.6667V15.1667" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
-    <rect x="3.5" y="3.5" width="21" height="21" rx="3" stroke="white" strokeWidth="2.33333"/>
-  </svg>
-);
-
-const TrendingUpIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M2.33334 19.8333L9.42501 12.7417C9.6442 12.5227 9.90528 12.3499 10.1929 12.2336C10.4806 12.1172 10.7891 12.0597 11.1 12.0645C11.4109 12.0693 11.7175 12.1364 12.0014 12.2616C12.2853 12.3869 12.5409 12.5677 12.7528 12.7933L15.2472 15.4567C15.4591 15.6823 15.7147 15.8631 15.9986 15.9884C16.2825 16.1136 16.5891 16.1807 16.9 16.1855C17.2109 16.1903 17.5194 16.1328 17.8071 16.0165C18.0947 15.9001 18.3558 15.7273 18.575 15.5083L25.6667 8.16666" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M18.6667 8.16666H25.6667V15.1667" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
+const AkilliTahsilatIcon = () => (
+  <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 24C0 10.7452 10.7452 0 24 0H72C85.2548 0 96 10.7452 96 24V72C96 85.2548 85.2548 96 72 96H24C10.7452 96 0 85.2548 0 72V24Z" fill="url(#paint0_akilli)"/>
+    <path d="M68.0007 48.0001H63.0407C62.1666 47.9982 61.316 48.2827 60.6189 48.81C59.9218 49.3373 59.4167 50.0785 59.1807 50.9201L54.4807 67.6401C54.4504 67.7439 54.3872 67.8352 54.3007 67.9001C54.2141 67.965 54.1089 68.0001 54.0007 68.0001C53.8925 68.0001 53.7872 67.965 53.7007 67.9001C53.6141 67.8352 53.551 67.7439 53.5207 67.6401L42.4807 28.3601C42.4504 28.2562 42.3872 28.165 42.3007 28.1001C42.2141 28.0352 42.1089 28.0001 42.0007 28.0001C41.8925 28.0001 41.7872 28.0352 41.7007 28.1001C41.6141 28.165 41.551 28.2562 41.5207 28.3601L36.8207 45.0801C36.5856 45.9184 36.0834 46.6571 35.3904 47.1841C34.6974 47.7111 33.8513 47.9976 32.9807 48.0001H28.0007" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+    <defs>
+      <linearGradient id="paint0_akilli" x1="48" y1="0" x2="48" y2="96" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#EB4697"/>
+        <stop offset="1" stopColor="#DC2B79"/>
+      </linearGradient>
+    </defs>
   </svg>
 );
 
 const features = [
   {
-    icon: fileShield,
-    iconBgKey: "blue",
+    icon: containerDijital,
     title: "Dijital Kira Sözleşmesi",
     description: "Sözleşmeler dakikalar içinde oluşturulur ve güvenli şekilde saklanır.",
   },
   {
-    icon: null,
-    iconBgKey: "darkNavy",
+    icon: containerRisk,
     title: "Kiracı Risk Analizi",
     description: "Kiracıların finansal güvenilirliği sözleşme öncesi analiz edilebilir.",
-    CustomIcon: BarChartIcon,
   },
   {
     icon: null,
-    iconBgKey: "hotPink",
     title: "Akıllı Kira Tahsilatı",
     description: "Bekleyen, tamamlanan, geçmiş tüm işlemler tek panelde. Ödemeler otomatik takip edilir.",
-    CustomIcon: TrendingUpIcon,
+    CustomIcon: AkilliTahsilatIcon,
   },
   {
-    icon: ozellik1,
-    iconBgKey: "cyan",
+    icon: containerDepozito,
     title: "Depozito Güvence Sistemi",
     description: "Depozito taraflardan bağımsız sistemde tutulur, şeffaf şekilde yönetilir.",
   },
   {
-    icon: kiraAkisi,
-    iconBgKey: "violet",
+    icon: containerKiraAkisi,
     title: "Kira Akışını Yatırıma Dönüştürme",
     description: "Kira ve depozito akışları yatırım araçları ile entegre edilebilir.",
   },
   {
-    icon: cokluPortfoy,
-    iconBgKey: "hotPink",
+    icon: containerPortfoy,
     title: "Çoklu Portföy Yönetimi",
     description: "Birden fazla mülkü tek panelden yönet. Portföy görünümü, Gelir raporları, Performans analizi",
   },
   {
-    icon: guvenliFinansal,
-    iconBgKey: "teal",
+    icon: containerFinansal,
     title: "Güvenli Finansal Altyapı",
     description: "KVKK uyumlu veri yapısı ve güvenli ödeme sistemleri.",
   },
@@ -127,11 +107,8 @@ export const HowItWorksSection = (): JSX.Element => {
               style={{ transitionDelay: gridVisible ? `${index * 80}ms` : "0ms" }}
             >
               <CardContent className="flex items-start gap-4 p-4">
-                <div
-                  className="flex-shrink-0 flex items-center justify-center rounded-[14px] w-[56px] h-[56px]"
-                  style={iconBgStyles[feature.iconBgKey]}
-                >
-                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-7 h-7" alt={feature.title} src={feature.icon!} />}
+                <div className="flex-shrink-0 w-[56px] h-[56px]">
+                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-full h-full" alt={feature.title} src={feature.icon!} />}
                 </div>
                 <div className="flex flex-col gap-1 min-w-0">
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-base leading-tight">
@@ -156,11 +133,8 @@ export const HowItWorksSection = (): JSX.Element => {
               style={{ transitionDelay: gridVisible ? `${index * 80}ms` : "0ms" }}
             >
               <CardContent className="flex flex-col items-center text-center gap-4 p-5">
-                <div
-                  className="flex items-center justify-center rounded-[16px] w-[72px] h-[72px]"
-                  style={iconBgStyles[feature.iconBgKey]}
-                >
-                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-9 h-9" alt={feature.title} src={feature.icon!} />}
+                <div className="w-[72px] h-[72px]">
+                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-full h-full" alt={feature.title} src={feature.icon!} />}
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-lg leading-tight">
@@ -216,11 +190,8 @@ export const HowItWorksSection = (): JSX.Element => {
                       }`}
                     >
                       <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-10" : "p-6"}`}>
-                        <div
-                          className="flex items-center justify-center rounded-[18px] w-[96px] h-[96px] transition-all duration-500"
-                          style={iconBgStyles[feature.iconBgKey]}
-                        >
-                          {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-12 h-12" alt={feature.title} src={feature.icon!} />}
+                        <div className="w-[96px] h-[96px] transition-all duration-500">
+                          {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-full h-full" alt={feature.title} src={feature.icon!} />}
                         </div>
                         <div className="flex flex-col gap-3">
                           <h3
