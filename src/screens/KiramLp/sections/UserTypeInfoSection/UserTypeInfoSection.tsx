@@ -127,7 +127,7 @@ export const UserTypeInfoSection = (): JSX.Element => {
                     willChange: "transform, opacity, filter",
                   }}
                   className={`${index === 0 ? "relative" : "absolute inset-0 p-3 sm:p-4 lg:p-6"} w-full h-auto object-contain`}
-                  alt={`Adim ${index + 1}: ${step.title}`}
+                  alt={`Adım ${index + 1}: ${step.title}`}
                   src={step.image}
                   loading="lazy"
                 />

@@ -9,24 +9,12 @@ import { useInView } from "../../../../hooks/useScrollAnimation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import containerDijital from "../../../../img/Container.svg";
 import containerRisk from "../../../../img/Container-1.svg";
+import containerAkilli from "../../../../img/Container-akilli.svg";
 import containerDepozito from "../../../../img/Container-3.svg";
 import containerKiraAkisi from "../../../../img/Container-4.svg";
 import containerPortfoy from "../../../../img/Container-5.svg";
 import containerFinansal from "../../../../img/Container-6.svg";
 import logoPattern from "../../../../img/logo-pattern.png";
-
-const AkilliTahsilatIcon = () => (
-  <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 24C0 10.7452 10.7452 0 24 0H72C85.2548 0 96 10.7452 96 24V72C96 85.2548 85.2548 96 72 96H24C10.7452 96 0 85.2548 0 72V24Z" fill="url(#paint0_akilli)"/>
-    <path d="M68.0007 48.0001H63.0407C62.1666 47.9982 61.316 48.2827 60.6189 48.81C59.9218 49.3373 59.4167 50.0785 59.1807 50.9201L54.4807 67.6401C54.4504 67.7439 54.3872 67.8352 54.3007 67.9001C54.2141 67.965 54.1089 68.0001 54.0007 68.0001C53.8925 68.0001 53.7872 67.965 53.7007 67.9001C53.6141 67.8352 53.551 67.7439 53.5207 67.6401L42.4807 28.3601C42.4504 28.2562 42.3872 28.165 42.3007 28.1001C42.2141 28.0352 42.1089 28.0001 42.0007 28.0001C41.8925 28.0001 41.7872 28.0352 41.7007 28.1001C41.6141 28.165 41.551 28.2562 41.5207 28.3601L36.8207 45.0801C36.5856 45.9184 36.0834 46.6571 35.3904 47.1841C34.6974 47.7111 33.8513 47.9976 32.9807 48.0001H28.0007" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-    <defs>
-      <linearGradient id="paint0_akilli" x1="48" y1="0" x2="48" y2="96" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#EB4697"/>
-        <stop offset="1" stopColor="#DC2B79"/>
-      </linearGradient>
-    </defs>
-  </svg>
-);
 
 const features = [
   {
@@ -40,10 +28,9 @@ const features = [
     description: "Kiracıların finansal güvenilirliği sözleşme öncesi analiz edilebilir.",
   },
   {
-    icon: null,
+    icon: containerAkilli,
     title: "Akıllı Kira Tahsilatı",
     description: "Bekleyen, tamamlanan, geçmiş tüm işlemler tek panelde. Ödemeler otomatik takip edilir.",
-    CustomIcon: AkilliTahsilatIcon,
   },
   {
     icon: containerDepozito,
@@ -108,7 +95,7 @@ export const HowItWorksSection = (): JSX.Element => {
             >
               <CardContent className="flex items-start gap-4 p-4">
                 <div className="flex-shrink-0 w-[56px] h-[56px]">
-                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-full h-full" alt={feature.title} src={feature.icon!} />}
+                  <img className="w-full h-full" alt={feature.title} src={feature.icon} />
                 </div>
                 <div className="flex flex-col gap-1 min-w-0">
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-base leading-tight">
@@ -134,7 +121,7 @@ export const HowItWorksSection = (): JSX.Element => {
             >
               <CardContent className="flex flex-col items-center text-center gap-4 p-5">
                 <div className="w-[72px] h-[72px]">
-                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-full h-full" alt={feature.title} src={feature.icon!} />}
+                  <img className="w-full h-full" alt={feature.title} src={feature.icon} />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-lg leading-tight">
@@ -191,7 +178,7 @@ export const HowItWorksSection = (): JSX.Element => {
                     >
                       <CardContent className={`flex flex-col items-center text-center gap-5 sm:gap-6 ${isActive ? "p-10" : "p-6"}`}>
                         <div className="w-[96px] h-[96px] transition-all duration-500">
-                          {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-full h-full" alt={feature.title} src={feature.icon!} />}
+                          <img className="w-full h-full" alt={feature.title} src={feature.icon} />
                         </div>
                         <div className="flex flex-col gap-3">
                           <h3
