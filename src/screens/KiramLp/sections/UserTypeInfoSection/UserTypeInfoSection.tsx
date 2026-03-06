@@ -1,48 +1,54 @@
 import { useRef, useState, useCallback } from "react";
-import nasilCalisir1 from "../../../../img/nasil-calisir-1.png";
+import step1Img from "../../../../img/1.png";
+import step2Img from "../../../../img/2.png";
+import step3Img from "../../../../img/3.png";
+import step4Img from "../../../../img/4.png";
+import step5Img from "../../../../img/5.png";
+import step6Img from "../../../../img/6.png";
+import step7Img from "../../../../img/7.png";
 
 const steps = [
   {
     number: 1,
     title: "Hesabını oluştur",
     description: "Ev sahibi veya kiracı olarak kaydol.",
-    image: nasilCalisir1,
+    image: step1Img,
   },
   {
     number: 2,
     title: "Kimliğini doğrula",
     description: "Tarafların güvenli şekilde eşleşmesi sağlanır.",
-    image: nasilCalisir1,
+    image: step2Img,
   },
   {
     number: 3,
     title: "Dijital sözleşme oluştur",
     description: "Kira sözleşmesi sistem üzerinden hazırlanır.",
-    image: nasilCalisir1,
+    image: step3Img,
   },
   {
     number: 4,
     title: "Depozito güvenceye alınır",
     description: "Depozito sistemde güvenli şekilde saklanır.",
-    image: nasilCalisir1,
+    image: step4Img,
   },
   {
     number: 5,
     title: "Kira ödemeleri otomatikleşir",
     description: "Tahsilat ve ödeme takibi sistem üzerinden yapılır.",
-    image: nasilCalisir1,
+    image: step5Img,
   },
   {
     number: 6,
     title: "Kira akışı yatırım araçlarına bağlanabilir",
     description: "İsteğe bağlı olarak finansal ürünlerle entegre edilir.",
-    image: nasilCalisir1,
+    image: step6Img,
   },
   {
     number: 7,
     title: "Tüm süreç kayıt altındadır",
     description: "Sözleşme, ödeme ve bildirim geçmişi tek panelde tutulur.",
-    image: nasilCalisir1,
+    image: step7Img,
   },
 ];
 
