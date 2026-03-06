@@ -5,7 +5,7 @@ import { Label } from "../../../../components/ui/label";
 import { Slider } from "../../../../components/ui/slider";
 import { useInView } from "../../../../hooks/useScrollAnimation";
 import patternBg from "../../../../img/pattern.png";
-import phonesImg from "../../../../img/Ultramarine.png";
+import phonesImg from "../../../../img/Ultramarine2x.png";
 import spkIcon from "../../../../img/spk-mevzuatina-uygun.svg";
 import lisansliIcon from "../../../../img/lisansli-kurumlar.svg";
 import bankaIcon from "../../../../img/banka-guvencesi.svg";
