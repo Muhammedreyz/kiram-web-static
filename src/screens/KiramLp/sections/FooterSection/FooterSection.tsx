@@ -2,7 +2,7 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
 import patternBg from "../../../../img/Frame_4205927.png";
 import tcmbLogo from "../../../../img/tcmb_1.png";
-import spkLogo from "../../../../img/e236ee915c285193fbc63a9923f5f8105d525332.png";
+import spkLogo from "../../../../img/spkx.png";
 import mkkLogo from "../../../../img/MKK-TR-Yatay-Logo-Beyaz.png";
 
 const XIcon = ({ className }: { className?: string }) => (
