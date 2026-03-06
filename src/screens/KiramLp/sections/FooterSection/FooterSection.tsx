@@ -2,30 +2,13 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import kiramWhite from "../../../../img/kiram-white.svg";
 import patternBg from "../../../../img/Frame_4205927.png";
 import tcmbLogo from "../../../../img/tcmb_1.png";
+import spkLogo from "../../../../img/e236ee915c285193fbc63a9923f5f8105d525332.png";
+import mkkLogo from "../../../../img/15e2a399cc4194e28ed559609d07506781d2cbe2.png";
 
 const XIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 300 271" fill="currentColor" className={className}>
     <path d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z" />
   </svg>
-);
-
-const SpkLogo = () => (
-  <svg viewBox="0 0 42 42" className="w-[40px] h-[40px]" fill="none">
-    <circle cx="21" cy="21" r="20" stroke="#98acc3" strokeWidth="1.5" />
-    <text x="21" y="16" textAnchor="middle" fill="#98acc3" fontSize="7" fontFamily="serif" fontWeight="bold">SPK</text>
-    <text x="21" y="25" textAnchor="middle" fill="#98acc3" fontSize="5" fontFamily="serif">Sermaye</text>
-    <text x="21" y="31" textAnchor="middle" fill="#98acc3" fontSize="5" fontFamily="serif">Piyasası</text>
-    <text x="21" y="37" textAnchor="middle" fill="#98acc3" fontSize="5" fontFamily="serif">Kurulu</text>
-  </svg>
-);
-
-const MkkLogo = () => (
-  <div className="flex flex-col items-start">
-    <span className="[font-family:'Outfit',Helvetica] font-bold text-white text-[11px] leading-tight tracking-wide">MERKEZi KAYIT</span>
-    <span className="[font-family:'Outfit',Helvetica] font-bold text-white text-[13px] leading-tight tracking-wide">iSTANBUL</span>
-    <span className="[font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[5px] leading-tight">Türkiye Sermaye Piyasaları - Merkezi</span>
-    <span className="[font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[5px] leading-tight">Saklama ve Veri Depolama Kuruluşu</span>
-  </div>
 );
 
 export const FooterSection = (): JSX.Element => {
@@ -72,7 +55,7 @@ export const FooterSection = (): JSX.Element => {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-col w-full max-w-[1440px] mx-auto border-t border-[#ffffff1f]">
+      <div className="relative z-10 flex flex-col w-full max-w-[1440px] mx-auto border-t border-[#ffffff1f] mt-[10px]">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 py-6 w-full">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
             <div className="flex items-center gap-6">
@@ -81,8 +64,16 @@ export const FooterSection = (): JSX.Element => {
                 alt="TCMB - Türkiye Cumhuriyeti Merkez Bankası"
                 className="w-[90px] sm:w-[103px] h-auto object-contain flex-shrink-0"
               />
-              <SpkLogo />
-              <MkkLogo />
+              <img
+                src={spkLogo}
+                alt="SPK - Sermaye Piyasası Kurulu"
+                className="w-[40px] sm:w-[48px] h-auto object-contain flex-shrink-0"
+              />
+              <img
+                src={mkkLogo}
+                alt="MKK - Merkezi Kayıt Kuruluşu"
+                className="w-[90px] sm:w-[103px] h-auto object-contain flex-shrink-0"
+              />
             </div>
 
             <p className="max-w-[424px] [font-family:'Outfit',Helvetica] font-normal text-[#98acc3] text-[10px] sm:text-[11px] leading-[15px]">
