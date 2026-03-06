@@ -11,70 +11,79 @@ import ozellik1 from "../../../../img/ozellik-1.svg";
 import fileShield from "../../../../img/file-shield.svg";
 import akilliOdeme from "../../../../img/akilli-odeme.svg";
 import kiraAkisi from "../../../../img/kira-akisi.svg";
-import tarafsiz from "../../../../img/tarafsiz.svg";
-import kolayKurulum from "../../../../img/kolay-kurulum.svg";
 import cokluPortfoy from "../../../../img/coklu-portfoy.svg";
 import guvenliFinansal from "../../../../img/guvenli-finansal-altyapi.svg";
 import logoPattern from "../../../../img/logo-pattern.png";
 
 const iconBgStyles: Record<string, React.CSSProperties> = {
-  orange: { background: "linear-gradient(180deg, rgba(251,146,60,1) 0%, rgba(249,115,22,1) 100%)" },
-  blue: { background: "linear-gradient(180deg, rgba(0,86,199,1) 0%, rgba(0,73,168,1) 100%)" },
-  green: { background: "linear-gradient(180deg, rgba(56,224,140,1) 0%, rgba(20,199,157,1) 100%)" },
-  cyan: { background: "linear-gradient(180deg, rgba(14,165,233,1) 0%, rgba(6,182,212,1) 100%)" },
-  darkBlue: { background: "linear-gradient(180deg, rgba(0,86,199,1) 0%, rgba(0,60,140,1) 100%)" },
-  darkOrange: { background: "linear-gradient(180deg, rgba(251,146,60,1) 0%, rgba(220,100,30,1) 100%)" },
-  teal: { background: "linear-gradient(180deg, rgba(34,210,238,1) 0%, rgba(8,184,214,1) 100%)" },
+  blue: { background: "linear-gradient(180deg, #4A90D9 0%, #2E6AB0 100%)" },
+  darkNavy: { background: "linear-gradient(180deg, #1B3A5C 0%, #0F2440 100%)" },
+  hotPink: { background: "linear-gradient(180deg, #E84393 0%, #D63384 100%)" },
+  cyan: { background: "linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%)" },
+  violet: { background: "linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%)" },
+  teal: { background: "linear-gradient(180deg, #2DD4BF 0%, #14B8A6 100%)" },
 };
+
+const BarChartIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.33333 18.6667V12.8333" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M14 18.6667V9.33333" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M18.6667 18.6667V15.1667" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
+    <rect x="3.5" y="3.5" width="21" height="21" rx="3" stroke="white" strokeWidth="2.33333"/>
+  </svg>
+);
+
+const TrendingUpIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.33334 19.8333L9.42501 12.7417C9.6442 12.5227 9.90528 12.3499 10.1929 12.2336C10.4806 12.1172 10.7891 12.0597 11.1 12.0645C11.4109 12.0693 11.7175 12.1364 12.0014 12.2616C12.2853 12.3869 12.5409 12.5677 12.7528 12.7933L15.2472 15.4567C15.4591 15.6823 15.7147 15.8631 15.9986 15.9884C16.2825 16.1136 16.5891 16.1807 16.9 16.1855C17.2109 16.1903 17.5194 16.1328 17.8071 16.0165C18.0947 15.9001 18.3558 15.7273 18.575 15.5083L25.6667 8.16666" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M18.6667 8.16666H25.6667V15.1667" stroke="white" strokeWidth="2.33333" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
 const features = [
   {
-    icon: akilliOdeme,
-    iconBgKey: "orange",
+    icon: fileShield,
+    iconBgKey: "blue",
+    title: "Dijital Kira Sözleşmesi",
+    description: "Sözleşmeler dakikalar içinde oluşturulur ve güvenli şekilde saklanır.",
+  },
+  {
+    icon: null,
+    iconBgKey: "darkNavy",
+    title: "Kiracı Risk Analizi",
+    description: "Kiracıların finansal güvenilirliği sözleşme öncesi analiz edilebilir.",
+    CustomIcon: BarChartIcon,
+  },
+  {
+    icon: null,
+    iconBgKey: "hotPink",
     title: "Akıllı Kira Tahsilatı",
-    description: "Bekleyen, tamamlanan ve geçmiş tüm kira işlemleri tek panelde. Ödemeler otomatik takip edilir.",
+    description: "Bekleyen, tamamlanan, geçmiş tüm işlemler tek panelde. Ödemeler otomatik takip edilir.",
+    CustomIcon: TrendingUpIcon,
   },
   {
     icon: ozellik1,
-    iconBgKey: "blue",
+    iconBgKey: "cyan",
     title: "Depozito Güvence Sistemi",
-    description: "Depozito taraflardan bağımsız sistemde tutulur, şeffaf şekilde iade edilir.",
+    description: "Depozito taraflardan bağımsız sistemde tutulur, şeffaf şekilde yönetilir.",
   },
   {
     icon: kiraAkisi,
-    iconBgKey: "green",
+    iconBgKey: "violet",
     title: "Kira Akışını Yatırıma Dönüştürme",
-    description: "Kira sözleşme boyunca yatırım seçenekleriyle değerlendirilebilir.",
-  },
-  {
-    icon: fileShield,
-    iconBgKey: "cyan",
-    title: "Dijital Kira Sözleşmesi",
-    description: "Dakikalar içinde oluşturulur, tüm ödemeler sözleşmeye bağlıdır.",
-  },
-  {
-    icon: tarafsiz,
-    iconBgKey: "darkBlue",
-    title: "Tarafsız ve Şeffaf Sistem",
-    description: "Her işlem kayıtlı, her süreç izlenebilir.",
-  },
-  {
-    icon: kolayKurulum,
-    iconBgKey: "green",
-    title: "Kolay Kurulum",
-    description: "Karmaşık süreçler yok, dakikalar içinde başlayabilirsiniz.",
+    description: "Kira ve depozito akışları yatırım araçları ile entegre edilebilir.",
   },
   {
     icon: cokluPortfoy,
-    iconBgKey: "darkOrange",
+    iconBgKey: "hotPink",
     title: "Çoklu Portföy Yönetimi",
-    description: "Birden fazla mülkü tek panelden yönetin. Gelir raporları ve performans analizi.",
+    description: "Birden fazla mülkü tek panelden yönet. Portföy görünümü, Gelir raporları, Performans analizi",
   },
   {
     icon: guvenliFinansal,
     iconBgKey: "teal",
     title: "Güvenli Finansal Altyapı",
-    description: "KVKK uyumlu veri yapısı, banka entegrasyonları, güvenli ödeme altyapısı.",
+    description: "KVKK uyumlu veri yapısı ve güvenli ödeme sistemleri.",
   },
 ];
 
@@ -122,7 +131,7 @@ export const HowItWorksSection = (): JSX.Element => {
                   className="flex-shrink-0 flex items-center justify-center rounded-[14px] w-[56px] h-[56px]"
                   style={iconBgStyles[feature.iconBgKey]}
                 >
-                  <img className="w-7 h-7" alt={feature.title} src={feature.icon} />
+                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-7 h-7" alt={feature.title} src={feature.icon!} />}
                 </div>
                 <div className="flex flex-col gap-1 min-w-0">
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-base leading-tight">
@@ -151,7 +160,7 @@ export const HowItWorksSection = (): JSX.Element => {
                   className="flex items-center justify-center rounded-[16px] w-[72px] h-[72px]"
                   style={iconBgStyles[feature.iconBgKey]}
                 >
-                  <img className="w-9 h-9" alt={feature.title} src={feature.icon} />
+                  {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-9 h-9" alt={feature.title} src={feature.icon!} />}
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <h3 className="[font-family:'Outfit',Helvetica] font-bold text-[#0b1f45] text-lg leading-tight">
@@ -211,11 +220,7 @@ export const HowItWorksSection = (): JSX.Element => {
                           className="flex items-center justify-center rounded-[18px] w-[96px] h-[96px] transition-all duration-500"
                           style={iconBgStyles[feature.iconBgKey]}
                         >
-                          <img
-                            className="w-12 h-12"
-                            alt={feature.title}
-                            src={feature.icon}
-                          />
+                          {feature.CustomIcon ? <feature.CustomIcon /> : <img className="w-12 h-12" alt={feature.title} src={feature.icon!} />}
                         </div>
                         <div className="flex flex-col gap-3">
                           <h3
