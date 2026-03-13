@@ -99,7 +99,7 @@ export const UserTypeInfoSection = (): JSX.Element => {
 
       <div className="flex flex-col lg:flex-row items-center lg:items-stretch max-w-[1440px] w-full mx-auto px-5 sm:px-8 lg:px-16 gap-6 lg:gap-16 pb-12 sm:pb-16">
         <div className="flex-shrink-0 flex items-center justify-center lg:w-[480px] xl:w-[540px]">
-          <div className="relative w-[220px] sm:w-[280px] lg:w-full bg-[#F3F3F3] rounded-[40px] sm:rounded-[48px] lg:rounded-[64px] p-3 sm:p-4 lg:p-6 flex items-center justify-center overflow-hidden">
+          <div className="relative w-[220px] sm:w-[280px] lg:w-full bg-[#F3F3F3] rounded-[40px] sm:rounded-[48px] lg:rounded-[64px] pt-3 px-3 sm:pt-4 sm:px-4 lg:pt-6 lg:px-6 pb-0 flex items-center justify-center overflow-hidden">
             {steps.map((step, index) => {
               const isActive = index === activeStep;
               const isExiting = index === prevStep && index !== activeStep;
