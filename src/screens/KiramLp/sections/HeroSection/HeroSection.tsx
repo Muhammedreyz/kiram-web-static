@@ -188,7 +188,7 @@ export const HeroSection = ({ onOpenModal }: HeroSectionProps): JSX.Element => {
             </div>
 
             <div
-              className={`w-full lg:w-[55%] xl:w-[58%] flex justify-center lg:justify-end items-center lg:items-end lg:self-end pt-6 sm:pt-8 lg:pt-0 transition-all duration-[1.4s] ease-out ${
+              className={`w-full lg:w-[55%] xl:w-[58%] flex justify-center lg:justify-end items-center lg:items-end lg:self-end pt-0 transition-all duration-[1.4s] ease-out ${
                 heroVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-20"
               }`}
             >
