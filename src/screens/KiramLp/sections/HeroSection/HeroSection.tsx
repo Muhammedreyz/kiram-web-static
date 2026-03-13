@@ -156,7 +156,7 @@ export const HeroSection = ({ onOpenModal }: HeroSectionProps): JSX.Element => {
         />
 
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-16">
-          <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start w-full min-h-[calc(100svh-72px)]">
+          <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-end lg:justify-start w-full min-h-[calc(100svh-72px)]">
             <div
               className={`w-full lg:w-[45%] xl:w-[42%] flex-shrink-0 flex flex-col justify-center text-center lg:text-left py-8 sm:py-12 lg:py-28 xl:py-32 transition-all duration-1000 delay-200 ${
                 heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
