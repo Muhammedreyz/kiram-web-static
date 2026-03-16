@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X } from "lucide-react";
+import { supabase } from "../lib/supabase";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -90,31 +91,43 @@ export const EarlyAccessModal = ({
 
     setLoading(true);
 
-    try {
-      const res = await fetch(
-        `${SUPABASE_URL}/functions/v1/send-early-access`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fullName: fullName.trim(),
-            phone: phone.replace(/\s/g, ""),
-            email: email.trim(),
-            city: city.trim(),
-            userType,
-            rentAmount: rentAmount.replace(/\s/g, ""),
-          }),
-        }
-      );
+    const formData = {
+      full_name: fullName.trim(),
+      phone: phone.replace(/\s/g, ""),
+      email: email.trim(),
+      city: city.trim(),
+      user_type: userType,
+      rent_amount: rentAmount.replace(/\s/g, ""),
+      consent_privacy: consentPrivacy,
+      consent_data_processing: consentData,
+    };
 
-      if (!res.ok) {
+    try {
+      const { error: dbError } = await supabase
+        .from("early_access_submissions")
+        .insert(formData);
+
+      if (dbError) {
         setError("Bir hata oluştu. Lütfen tekrar deneyin.");
         setLoading(false);
         return;
       }
+
+      fetch(`${SUPABASE_URL}/functions/v1/send-smtp-email`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.full_name,
+          phone: formData.phone,
+          email: formData.email,
+          city: formData.city,
+          userType: formData.user_type,
+          rentAmount: formData.rent_amount,
+        }),
+      }).catch(() => {});
 
       setSuccess(true);
     } catch {

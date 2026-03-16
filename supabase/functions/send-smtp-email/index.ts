@@ -1,4 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import nodemailer from "npm:nodemailer@6.9.16";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,8 +8,12 @@ const corsHeaders = {
     "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-const TARGET_EMAIL = "muhammet.unlu@2sworks.com";
+const SMTP_HOST = Deno.env.get("SMTP_HOST") || "";
+const SMTP_PORT = parseInt(Deno.env.get("SMTP_PORT") || "587", 10);
+const SMTP_USER = Deno.env.get("SMTP_USER") || "";
+const SMTP_PASS = Deno.env.get("SMTP_PASS") || "";
+const SMTP_FROM = Deno.env.get("SMTP_FROM") || "";
+const SMTP_TO = Deno.env.get("SMTP_TO") || "muhammet.unlu@2sworks.com";
 
 interface FormData {
   fullName: string;
@@ -25,7 +30,18 @@ Deno.serve(async (req: Request) => {
   }
 
   try {
-    const { fullName, phone, email, city, userType, rentAmount }: FormData = await req.json();
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !SMTP_FROM) {
+      return new Response(
+        JSON.stringify({ error: "SMTP not configured" }),
+        {
+          status: 500,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    const { fullName, phone, email, city, userType, rentAmount }: FormData =
+      await req.json();
 
     if (!fullName || !phone || !email) {
       return new Response(
@@ -37,7 +53,12 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const userTypeLabel = userType === "ev_sahibi" ? "Ev Sahibi" : userType === "kiraci" ? "Kiracı" : "-";
+    const userTypeLabel =
+      userType === "ev_sahibi"
+        ? "Ev Sahibi"
+        : userType === "kiraci"
+          ? "Kiraci"
+          : "-";
 
     const htmlBody = `
       <h2>Yeni Erken Erisim Basvurusu</h2>
@@ -51,40 +72,30 @@ Deno.serve(async (req: Request) => {
       </table>
     `;
 
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS,
       },
-      body: JSON.stringify({
-        from: "Kiram <onboarding@resend.dev>",
-        to: [TARGET_EMAIL],
-        subject: `Yeni Erken Erisim Basvurusu: ${fullName}`,
-        html: htmlBody,
-      }),
     });
 
-    if (!res.ok) {
-      const errorData = await res.text();
-      console.error("Resend error:", errorData);
-      return new Response(
-        JSON.stringify({ error: "Failed to send email" }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
-    }
+    await transporter.sendMail({
+      from: SMTP_FROM,
+      to: SMTP_TO,
+      subject: `Yeni Erken Erisim Basvurusu: ${fullName}`,
+      html: htmlBody,
+    });
 
-    const data = await res.json();
-    return new Response(JSON.stringify({ success: true, id: data.id }), {
+    return new Response(JSON.stringify({ success: true }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Error:", error);
+    console.error("SMTP Error:", error);
     return new Response(
-      JSON.stringify({ error: "Internal server error" }),
+      JSON.stringify({ error: "Failed to send email" }),
       {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
