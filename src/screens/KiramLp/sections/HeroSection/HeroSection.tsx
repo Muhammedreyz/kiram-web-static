@@ -12,8 +12,7 @@ import bankaIcon from "../../../../img/banka-guvencesi.svg";
 import fonlarIcon from "../../../../img/dusuk-riskli-fonlar.svg";
 import iconCopySvg from "../../../../img/Icon copy.svg";
 
-const HEDEF_API_URL = "https://appapi.hedefportfoy.com.tr/tenant/ideal/getiriHesapla";
-const HEDEF_API_KEY = import.meta.env.VITE_HEDEFPORTFOY_API_KEY;
+const PROXY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/hedef-portfoy-proxy`;
 
 const DEPOSIT_MIN = 10000;
 const DEPOSIT_MAX = 200000;
@@ -77,12 +76,10 @@ export const HeroSection = ({ onOpenModal }: HeroSectionProps): JSX.Element => {
         setLoading(true);
         setError(false);
         try {
-          const res = await fetch(HEDEF_API_URL, {
+          const res = await fetch(PROXY_URL, {
             method: "POST",
             headers: {
-              Accept: "*/*",
               "Content-Type": "application/json",
-              "x-api-key": HEDEF_API_KEY,
             },
             body: JSON.stringify({
               fundCode: "HPH",
