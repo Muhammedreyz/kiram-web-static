@@ -1,9 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X } from "lucide-react";
-import { supabase } from "../lib/supabase";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const API_BASE = import.meta.env.VITE_API_BASE || "/api";
 
 interface EarlyAccessModalProps {
   isOpen: boolean;
@@ -103,22 +101,21 @@ export const EarlyAccessModal = ({
     };
 
     try {
-      const { error: dbError } = await supabase
-        .from("early_access_submissions")
-        .insert(formData);
+      const dbRes = await fetch(`${API_BASE}/submissions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      if (dbError) {
+      if (!dbRes.ok) {
         setError("Bir hata oluştu. Lütfen tekrar deneyin.");
         setLoading(false);
         return;
       }
 
-      fetch(`${SUPABASE_URL}/functions/v1/send-smtp-email`, {
+      fetch(`${API_BASE}/send-email`, {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           fullName: formData.full_name,
           phone: formData.phone,

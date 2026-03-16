@@ -12,7 +12,8 @@ import bankaIcon from "../../../../img/banka-guvencesi.svg";
 import fonlarIcon from "../../../../img/dusuk-riskli-fonlar.svg";
 import iconCopySvg from "../../../../img/Icon copy.svg";
 
-const PROXY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/hedef-portfoy-proxy`;
+const API_BASE = import.meta.env.VITE_API_BASE || "/api";
+const PROXY_URL = `${API_BASE}/hedef-portfoy`;
 
 const DEPOSIT_MIN = 10000;
 const DEPOSIT_MAX = 200000;
